@@ -32,7 +32,7 @@ export default function Task({task: {completed, label, important}}){
             <p>{label}</p>
         </div>
 
-        <ImportantMarker func={handleStatus} bgColorClass="bg-amber-500" />
+        <ImportantMarker func={handleStatus} color="amber" />
 
         {/* Delete marker. Use stroke color class */}
         <DeleteMarker className="stroke-amber-500"/>
