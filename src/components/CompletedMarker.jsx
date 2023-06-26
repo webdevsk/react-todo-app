@@ -5,7 +5,7 @@ function CompletedMarker({className, color, func: handleStatus}) {
   const inputRef = useRef(null)
   useEffect(()=>{
     function handleChange(e){
-      handleStatus(e.target.checked)
+      handleStatus({completed: e.target.checked})
     }
     const elm = inputRef.current
     elm.addEventListener('change', handleChange)
@@ -23,7 +23,7 @@ function CompletedMarker({className, color, func: handleStatus}) {
                 unmount: { scale: 0, y: 25 },
               }}
     >
-        <Checkbox inputRef={inputRef} id={id} labelProps={{htmlFor: id}} className={`rounded-full ${className}`} color={color} />
+        <Checkbox ripple={false} inputRef={inputRef} id={id} labelProps={{htmlFor: id}} className={`rounded-full ${className}`} color={color} />
     </Tooltip>
   )
 }

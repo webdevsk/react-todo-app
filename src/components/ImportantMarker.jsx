@@ -11,7 +11,7 @@ function ImportantMarker({className, bgColorClass, func: handleImportant}) {
         }}
         
     >
-    <input type="checkbox" onChange={(e)=>handleImportant(e.target.checked)}
+    <input type="checkbox" onChange={(e)=>handleImportant({important: e.target.checked})}
       className={`
       invisible
       cursor-pointer
