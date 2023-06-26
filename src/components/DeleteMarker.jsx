@@ -1,6 +1,7 @@
 import { Tooltip } from "@material-tailwind/react";
+// Tooltip is not a container element
 
-export default function DeleteMarker({className}) {
+export default function DeleteMarker({className, id: taskId, deleteTask}) {
   return (
     <Tooltip
         content="Delete Task"
@@ -10,6 +11,7 @@ export default function DeleteMarker({className}) {
         }}
     >
     <button 
+    onClick={()=>deleteTask(taskId)}
     className={`
     px-4
     appearance-none
