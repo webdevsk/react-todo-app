@@ -1,21 +1,32 @@
 import { List } from '@material-tailwind/react';
-import tasksArr from "../assets/tasks"
 import Task from './Task';
 import { useState, useEffect } from 'react';
+import FloatingInput from './FloatingInput';
 export default function TaskList({className}) {
-  const [tasks, setTasks] = useState([])
-  function updateArr(){
+  const [newTask, setNewTask] = useState([])
+
+  useEffect(() => {
+    // Run only when newTask changes
+    window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" });
+  }, [newTask])
+  function handleNewTask(label){
+    
+    setNewTask(prevTasks => {
+      return [...prevTasks, {id:crypto.randomUUID(), completed: false, important: false, label: label}]
+    })
     
   }
-  useEffect(()=> setTasks([...tasksArr]), [])
   
   return (
-    <div className={`container px-4 mb-4 ${className}`}>
+    <>
+    <div className={`container pb-28 ${className}`}>
       <List className="gap-y-4 p-0">
-          {tasks.map(task => {
+          {newTask.map(task => {
             return <Task key={crypto.randomUUID()} task={task} />
           })}
       </List>
     </div>
+    <FloatingInput className="max-w-2xl px-8 mx-auto" func={handleNewTask} />
+    </>
   )
 }
