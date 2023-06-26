@@ -1,11 +1,11 @@
 import { useEffect, useId, useRef } from 'react'
 import { Checkbox, Tooltip } from "@material-tailwind/react"
 
-function CompletedMarker({className, color, func: handleStatus}) {
+function CompletedMarker({className, color, id: TaskId, func: handleUpdateTask}) {
   const inputRef = useRef(null)
   useEffect(()=>{
     function handleChange(e){
-      handleStatus({completed: e.target.checked})
+      handleUpdateTask(TaskId, {completed: e.target.checked})
     }
     const elm = inputRef.current
     elm.addEventListener('change', handleChange)

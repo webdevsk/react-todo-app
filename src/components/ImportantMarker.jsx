@@ -1,15 +1,18 @@
 import { Tooltip } from "@material-tailwind/react"
 // Tooltip is not a container element
 
-function ImportantMarker({inputClasses, shadowClasses, iconClasses, func: handleImportant}) {
+function ImportantMarker({inputClasses, shadowClasses, iconClasses, id: taskId, func: handleUpdateTask}) {
   const shadowColors = "peer-hover:peer-checked:bg-amber-500"
   const svgColors = "peer-checked:fill-amber-500 stroke-amber-500"
 
+  function handleImportant(e){
+    handleUpdateTask(taskId, {important: e.target.checked})
+  }
   return (
   <>
   <div className={`inputContainer relative mx-6`}>
     <Tooltip content="Mark as important" animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }}}>
-      <input type="checkbox" onChange={(e)=>handleImportant(e.target.checked)} className={`opacity-0 cursor-pointer w-12 h-12 absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 rounded-full peer ${inputClasses}`} />
+      <input type="checkbox" onChange={handleImportant} className={`opacity-0 cursor-pointer w-12 h-12 absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 rounded-full peer ${inputClasses}`} />
     </Tooltip>
     
     <div className={`customShadow opacity-0 bg-blue-gray-500 absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 rounded-full h-12 w-12 peer-hover:opacity-10 peer-hover:peer-checked:opacity-10 transition-all -z-10 ${shadowColors} ${shadowClasses}`}></div>
