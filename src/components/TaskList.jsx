@@ -5,15 +5,20 @@ import FloatingInput from './FloatingInput'
 
 
 export default function TaskList({className}) {
-  const [newTask, setNewTask] = useState([])
+  const [newTask, setNewTask] = useState(() => {
+    const localTasks = localStorage.getItem('TODOS')
+
+    if (localTasks === null || localTasks === '') return []
+    return JSON.parse(localTasks)
+  })
+  
   useEffect(() => {
     // Run only when newTask changes
-    window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" });
+    window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" })
+
+    localStorage.setItem('TODOS', JSON.stringify(newTask))
   }, [newTask])
 
-  useEffect(()=>{
-    setNewTask([{id:crypto.randomUUID(), completed: true, important: true, label: "Hello World"}])
-  }, [])
 
   function handleNewTask(label){
     setNewTask(prevTasks => {
@@ -43,9 +48,10 @@ export default function TaskList({className}) {
     <>
     <div className={`container pb-28 ${className}`}>
       <List className="gap-y-4 p-0">
-          {newTask.map(task => {
-            return <Task key={task.id} task={task} handleUpdateTask={handleUpdateTask} deleteTask={deleteTask} />
-          })}
+        {newTask.length == 0 && <p className={`text-base text-gray-700`}>No tasks yet. Type one below to get started!</p>}
+        {newTask.map(task => {
+          return <Task key={task.id} task={task} handleUpdateTask={handleUpdateTask} deleteTask={deleteTask} />
+        })}
       </List>
     </div>
 
