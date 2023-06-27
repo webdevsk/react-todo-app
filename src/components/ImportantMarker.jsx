@@ -1,16 +1,13 @@
 import { Tooltip } from "@material-tailwind/react"
-import { useState } from "react";
 // Tooltip is not a container element
 
-function ImportantMarker({inputClasses, shadowClasses, iconClasses, task, handleUpdateTask}) {
-  const [important, setImportant] = useState(task.important)
+function ImportantMarker({id, important, inputClasses, shadowClasses, iconClasses, handleUpdateTask}) {
 
   const shadowColors = "peer-hover:peer-checked:bg-amber-500"
   const svgColors = "peer-checked:fill-amber-500 stroke-amber-500"
 
   function handleImportant(e){
-    setImportant(e.target.checked)
-    handleUpdateTask(task.id, {important: e.target.checked})
+    handleUpdateTask(id, {important: e.target.checked})
   }
 
   return (

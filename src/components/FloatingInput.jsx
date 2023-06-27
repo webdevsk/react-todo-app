@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconButton, Input, Tooltip } from "@material-tailwind/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { IconButton, Input, Tooltip } from "@material-tailwind/react"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react";
+import { useState } from "react"
 function FloatingInput({className, handleNewTask}) {
     const [inputValue, setInputValue] = useState('')
     function handleSubmit(e){

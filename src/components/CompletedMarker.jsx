@@ -1,13 +1,11 @@
-import { useId, useState } from 'react'
+import { useId } from 'react'
 import { Checkbox, Tooltip } from "@material-tailwind/react"
 // Tooltip is not a container element
 
-function CompletedMarker({className, color, task, handleUpdateTask}) {
-  const [checked, setChecked] = useState(task.completed)
-
+function CompletedMarker({id, completed, className, color, handleUpdateTask}) {
+  
   function handleChange(e){
-    setChecked(e.target.checked)
-    handleUpdateTask(task.id, {completed: e.target.checked})
+    handleUpdateTask(id, {completed: e.target.checked})
   }
 
   const elmid = useId()
@@ -19,7 +17,7 @@ function CompletedMarker({className, color, task, handleUpdateTask}) {
                 unmount: { scale: 0, y: 25 },
               }}
     >
-        <Checkbox ripple={false} onChange={handleChange} checked={checked} elmid={elmid} labelProps={{htmlFor: elmid}} className={`rounded-full ${className}`} color={color} />
+        <Checkbox ripple={false} onChange={handleChange} checked={completed} elmid={elmid} labelProps={{htmlFor: elmid}} className={`rounded-full ${className}`} color={color} />
     </Tooltip>
   )
 }

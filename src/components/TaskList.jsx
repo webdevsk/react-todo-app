@@ -6,7 +6,6 @@ import FloatingInput from './FloatingInput'
 
 export default function TaskList({className}) {
   const [newTask, setNewTask] = useState([])
-  console.log(...newTask)
   useEffect(() => {
     // Run only when newTask changes
     window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" });
