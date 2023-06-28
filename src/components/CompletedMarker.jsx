@@ -4,8 +4,11 @@ import { Checkbox, Tooltip } from "@material-tailwind/react"
 
 function CompletedMarker({id, completed, className, color, handleUpdateTask}) {
   
-  function handleChange(e){
-    handleUpdateTask(id, {completed: e.target.checked})
+  function handleChange({target}){
+    //for ripple effect and other styles based on checked or not
+    target.closest('.task-item').dataset.completed = target.checked ? true : false
+    target.closest('.task-item').classList.toggle('ripple', target.checked)
+    handleUpdateTask(id, {completed: target.checked})
   }
 
   const elmid = useId()
@@ -17,7 +20,7 @@ function CompletedMarker({id, completed, className, color, handleUpdateTask}) {
                 unmount: { scale: 0, y: 25 },
               }}
     >
-        <Checkbox ripple={false} onChange={handleChange} checked={completed} elmid={elmid} labelProps={{htmlFor: elmid}} className={`rounded-full ${className}`} color={color} />
+        <Checkbox ripple={false} onChange={handleChange} checked={completed} id={elmid} containerProps={{htmlFor: elmid}} className={`rounded-full ${className}`} color={color} />
     </Tooltip>
   )
 }

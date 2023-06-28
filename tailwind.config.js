@@ -9,7 +9,19 @@ export default withMT({
     "./src/**/**/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        ripple: {
+          '100%': {
+            width: '2000px',
+            height: '2000px',
+          },
+        },
+      },
+      animation: {
+        ripple: 'ripple .8s linear'
+      }
+    },
   },
   plugins: [],
 })

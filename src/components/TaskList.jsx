@@ -27,7 +27,7 @@ export default function TaskList({className}) {
   }
 
   function handleUpdateTask(id, obj){
-    console.log(id, obj)
+    // console.log(id, obj)
     setNewTask(prevTasks => {
       return prevTasks.map(task => {
         if (task.id === id){
