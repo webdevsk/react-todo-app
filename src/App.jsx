@@ -2,11 +2,14 @@ import ScrollToTop from 'react-scroll-to-top';
 import FloatingInput from './components/FloatingInput';
 import Heading from './components/Heading';
 import TaskList from "./components/TaskList";
+import SideMenu from './components/SideMenu';
 
 function App() {
   return (
     <>
     {/* Core components */}
+    <SideMenu />
+
     <Heading className="max-w-2xl mx-auto px-8 mb-4 mt-12"/>
 
     <TaskList className="max-w-2xl mx-auto px-8" />

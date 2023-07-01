@@ -6,6 +6,7 @@ function FloatingInput({className, handleNewTask}) {
     const [inputValue, setInputValue] = useState('')
     function handleSubmit(e){
         e.preventDefault()
+        console.log(e)
         handleNewTask(inputValue)
         setInputValue('')
     }
@@ -13,7 +14,7 @@ function FloatingInput({className, handleNewTask}) {
     <>
     <div className="fixed bottom-12 w-full">
         <div className={`${className} rounded-md`}>
-            <form method="POST" onSubmit={handleSubmit} action="#" className="appearance-none w-full block relative">
+            <form method="POST" onSubmit={handleSubmit}className="appearance-none w-full block relative">
                 <Input color="amber" type="text" required value={inputValue} onChange={(e)=>setInputValue(e.target.value)} placeholder="New task" containerProps={{className: "h-12"}}
                 labelProps={{className: "hidden"}}
                 className={`pr-20 focus:border-t-amber-500 !border-amber-500 ring-4 ring-amber-500 !border  bg-white shadow-xl shadow-blue-gray-900/30 placeholder:text-base placeholder:text-blue-gray-200 text-blue-gray-500`}/>

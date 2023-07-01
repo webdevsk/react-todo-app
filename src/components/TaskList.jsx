@@ -8,6 +8,7 @@ export default function TaskList({className}) {
   const [newTask, setNewTask] = useState(() => {
     const localTasks = localStorage.getItem('TODOS')
 
+    
     if (localTasks === null || localTasks === '') return []
     return JSON.parse(localTasks)
   })
@@ -22,7 +23,7 @@ export default function TaskList({className}) {
 
   function handleNewTask(label){
     setNewTask(prevTasks => {
-      return [...prevTasks, {id:crypto.randomUUID(), completed: false, important: false, label: label}]
+      return [...prevTasks, {id: new Date(), completed: false, important: false, label: label}]
     })
   }
 
