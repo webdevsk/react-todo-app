@@ -5,7 +5,7 @@ import ImportantMarker from './ImportantMarker'
 export default function Task({task, handleUpdateTask, deleteTask}){
   
   return (
-    <div className={`task-item flex items-stretch border-solid border border-gray-200 rounded-lg shadow-md relative overflow-hidden`}>
+    <div className={`task-item bg-white flex items-stretch border-solid border border-gray-200 rounded-lg shadow-md relative overflow-hidden animate-toUp [animation-fill-mode:forwards] -z-0`}>
 
         {/* Completed marker. Use Border color class */}
         <CompletedMarker {...task} handleUpdateTask={handleUpdateTask} className="border-amber-500" color="amber" />

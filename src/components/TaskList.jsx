@@ -1,7 +1,8 @@
 import { List } from '@material-tailwind/react'
 import Task from './Task'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import FloatingInput from './FloatingInput'
+import { nanoid } from 'nanoid';
 
 
 export default function TaskList({className}) {
@@ -12,10 +13,13 @@ export default function TaskList({className}) {
     if (localTasks === null || localTasks === '') return []
     return JSON.parse(localTasks)
   })
-  
+  const prevLength = useRef(newTask.length)
   useEffect(() => {
-    // Run only when newTask changes
-    window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" })
+    // Run only when new task is added
+    if (prevLength.current < newTask.length){
+      window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" })
+    }
+    prevLength.current = newTask.length
 
     localStorage.setItem('TODOS', JSON.stringify(newTask))
   }, [newTask])
@@ -23,7 +27,7 @@ export default function TaskList({className}) {
 
   function handleNewTask(label){
     setNewTask(prevTasks => {
-      return [...prevTasks, {id: new Date(), completed: false, important: false, label: label}]
+      return [...prevTasks, {id: nanoid(), completed: false, important: false, label: label}]
     })
   }
 
@@ -40,6 +44,7 @@ export default function TaskList({className}) {
   }
 
   function deleteTask(id){
+    
     setNewTask(prevTasks => {
       return prevTasks.filter(task => task.id !== id)
     })

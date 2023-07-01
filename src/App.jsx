@@ -10,7 +10,7 @@ function App() {
     {/* Core components */}
     <SideMenu />
 
-    <Heading className="max-w-2xl mx-auto px-8 mb-4 mt-12"/>
+    <Heading className="max-w-2xl mx-auto px-8 mb-4 mt-24"/>
 
     <TaskList className="max-w-2xl mx-auto px-8" />
 

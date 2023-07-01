@@ -1,9 +1,13 @@
 
 
 export default function DeleteMarker({id, className, deleteTask}) {
+  function handleDelete(){
+    deleteTask(id)
+  }
+  
   return (
     <button 
-    onClick={()=>deleteTask(id)}
+    onClick={handleDelete}
     className={`
     px-4
     appearance-none
