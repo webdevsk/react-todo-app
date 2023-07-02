@@ -74,7 +74,7 @@ export default function TaskList({className}) {
       <div className={`container pb-28 ${className}`}>
         <div className="bulkManager rounded-lg flex text-gray-500 flex-wrap items-center mb-2 justify-between">
 
-          <Tooltip content='Mark all as completed'>
+          <Tooltip content='Mark all as completed' animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
             <button className={`w-6 h-6 m-3 rounded-sm shadow-none group bg-transparent`} onClick={markAllCompleted}>
               <FontAwesomeIcon className={`text-xl group-hover:text-amber-500 transition-colors`} icon={faListCheck} />
             </button>

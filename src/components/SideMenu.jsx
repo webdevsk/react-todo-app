@@ -44,7 +44,7 @@ export default function SideMenu() {
       <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap`}>
         <CardBody shadow={false} className={`flex-1`}>
           <a href="/">
-            <Typography variant='h4' className={`mt-16`}>Elegant TODO List</Typography> 
+            <Typography variant='h4' className={`mt-16`}>TODO App</Typography> 
           </a>
         </CardBody>
 
