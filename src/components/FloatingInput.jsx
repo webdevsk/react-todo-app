@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { IconButton, Input, Tooltip } from "@material-tailwind/react"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { useState } from "react"
-function FloatingInput({className, handleNewTask}) {
+import { useContext, useState } from "react"
+import { TaskContext } from './TaskList'
+
+function FloatingInput({className}) {
+    const {handleNewTask} = useContext(TaskContext)
     const [inputValue, setInputValue] = useState('')
     function handleSubmit(e){
         e.preventDefault()

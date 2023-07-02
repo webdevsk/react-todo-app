@@ -1,10 +1,12 @@
-import { useId } from "react";
+import { useContext, useId } from "react";
+import { TaskContext } from './TaskList'
 // Tooltip is not a container element
 
-function ImportantMarker({id, important, inputClasses, shadowClasses, iconClasses, handleUpdateTask}) {
+function ImportantMarker({id, important, inputClasses, shadowClasses, iconClasses}) {
 
   const elmid = useId()
-
+  const {handleUpdateTask} = useContext(TaskContext)
+  
   function handleImportant(e){
     handleUpdateTask(id, {important: e.target.checked})
   }
