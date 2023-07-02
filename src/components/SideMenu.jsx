@@ -51,7 +51,7 @@ export default function SideMenu() {
         <CardFooter>
           
           <Card shadow={false} variant='filled' color='white'>
-            <CardBody class={`flex flex-col gap-0 p-0`}>
+            <CardBody className={`flex flex-col gap-0 p-0`}>
               <hr className='h-0.5 mb-4 rounded bg-gray-900/40'/>
               <Typography color='gray' variant='h6'>Mohammed Salman Khan</Typography>
               <Typography color='gray' className={`text-sm font-medium`}>Jr. Frontend Web Developer</Typography>

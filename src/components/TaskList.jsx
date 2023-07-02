@@ -1,9 +1,11 @@
 import { List } from '@material-tailwind/react'
 import Task from './Task'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, createContext } from 'react'
 import FloatingInput from './FloatingInput'
 import { nanoid } from 'nanoid';
 
+const TaskContext = createContext()
+export {TaskContext}
 
 export default function TaskList({className}) {
   const [newTask, setNewTask] = useState(() => {
@@ -13,6 +15,8 @@ export default function TaskList({className}) {
     if (localTasks === null || localTasks === '') return []
     return JSON.parse(localTasks)
   })
+  console.log(newTask)
+
   const prevLength = useRef(newTask.length)
   useEffect(() => {
     // Run only when new task is added
@@ -51,17 +55,19 @@ export default function TaskList({className}) {
   }
   
   return (
-    <>
-    <div className={`container pb-28 ${className}`}>
-      <List className="gap-y-4 p-0">
-        {newTask.length == 0 && <p className={`text-base text-gray-700`}>No tasks yet. Type one below to get started!</p>}
-        {newTask.map(task => {
-          return <Task key={task.id} task={task} handleUpdateTask={handleUpdateTask} deleteTask={deleteTask} />
-        })}
-      </List>
-    </div>
+  <TaskContext.Provider value={{handleNewTask, handleUpdateTask, deleteTask}}>
+      <div className={`container pb-28 ${className}`}>
+        <List className="gap-y-4 p-0">
+          {newTask.length == 0 && <p className={`text-base text-gray-700`}>No tasks yet. Type one below to get started!</p>}
+          {newTask.map(task => {
+            return (
+              <Task key={task.id} task={task}/>
+            )
+          })}
+        </List>
+      </div>
 
-    <FloatingInput className="max-w-2xl px-8 mx-auto" handleNewTask={handleNewTask} />
-    </>
+      <FloatingInput className="max-w-2xl px-8 mx-auto" />
+    </TaskContext.Provider>
   )
 }
