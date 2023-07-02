@@ -55,9 +55,9 @@ export default function SideMenu() {
               <hr className='h-0.5 mb-4 rounded bg-gray-900/40'/>
               <Typography color='gray' variant='h6'>Mohammed Salman Khan</Typography>
               <Typography color='gray' className={`text-sm font-medium`}>Jr. Frontend Web Developer</Typography>
-              <div className="flex gap-2 mt-2 flex-wrap">
+              <div className="flex gap-4 mt-2 flex-wrap">
 
-                <a href="https://github.com/webdevsk">
+                <a href="https://github.com/webdevsk" target='_blank' rel='noreferrer'>
                   <Tooltip content="GitHub" target='_blank' rel='noreferrer'>
                     <IconButton className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
                       <FontAwesomeIcon className={`w-7 h-7 mt-[2px] text-gray-900`} icon={faGithubSquare} />

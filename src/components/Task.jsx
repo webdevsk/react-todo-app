@@ -14,8 +14,8 @@ export default function Task({task}){
         <span className={`absolute left-0 -translate-x-2/4 top-2/4 -translate-y-2/4 bg-gray-200 rounded-full w-0 h-0 origin-bottom -z-10 [animation-fill-mode:forwards] ${task.completed && 'animate-ripple'}`} ></span>
 
         {/* Task Label */}
-        <div className={`flex-1 px-4 py-2 flex items-center text-base ${task.completed && 'line-through opacity-60'}`}>
-            <p>{task.label}</p>
+        <div className={`flex-1 mx-4 py-2 flex items-center text-base  max-w-full overflow-x-auto ${task.completed && 'line-through opacity-60'}`}>
+            {task.label}
         </div>
 
         <ImportantMarker {...task} color="amber" />

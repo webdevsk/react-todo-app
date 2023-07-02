@@ -20,7 +20,7 @@ function FloatingInput({className}) {
             <form method="POST" onSubmit={handleSubmit}className="appearance-none w-full block relative">
                 <Input color="amber" type="text" required value={inputValue} onChange={(e)=>setInputValue(e.target.value)} placeholder="New task" containerProps={{className: "h-12"}}
                 labelProps={{className: "hidden"}}
-                className={`pr-20 focus:border-t-amber-500 !border-amber-500 ring-4 ring-amber-500 !border  bg-white shadow-xl shadow-blue-gray-900/30 placeholder:text-base placeholder:text-blue-gray-200 text-blue-gray-500`}/>
+                className={`pr-20 focus:border-t-amber-500 !border-amber-500 ring-4 ring-amber-500 !border  bg-white shadow-xl shadow-blue-gray-900/30 placeholder:text-base placeholder:text-blue-gray-200 text-blue-gray-500`} maxLength={50}/>
 
                 <Tooltip content="Add new task"
                 animate={{
