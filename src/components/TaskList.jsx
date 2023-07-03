@@ -87,15 +87,15 @@ export default function TaskList({className}) {
           }}>
           
             <MenuHandler>
-              <button className={newTask.filter(task => task.completed === true).length > 0 ? `block` : `hidden`}>
+              <button className={`${newTask.filter(task => task.completed === true).length > 0 ? `block` : `hidden`}  animate-toUp`}>
                 <Typography variant="h6" className={`text-red-500 mx-4`}>Delete all completed</Typography>
               </button>
             </MenuHandler>
             <MenuList>
-              <MenuItem className='!text-red-500 !bg-transparent font-bold hover:!text-white !bg-transparent hover:!bg-red-500' onClick={deleteAllMarked}>
+              <MenuItem className='!text-red-500 !bg-transparent font-bold hover:!text-white !bg-transparent hover:!bg-red-500 text-center' onClick={deleteAllMarked}>
                 Confirm
               </MenuItem>
-              <MenuItem className='font-bold hover:!text-white hover:!bg-gray-500'>
+              <MenuItem className='font-bold hover:!text-white hover:!bg-gray-500 text-center'>
                 Cancel
               </MenuItem>
             </MenuList>
@@ -103,8 +103,8 @@ export default function TaskList({className}) {
 
         </div>
 
-        <List className="gap-y-4 p-0">
-          {newTask.length == 0 && <p className={`text-base text-gray-700`}>No tasks yet. Type one below to get started!</p>}
+        <List className="gap-y-4 p-0 text-black">
+          {newTask.length == 0 && <p className={`text-base`}>No tasks yet. Type one below to get started!</p>}
           {newTask.map(task => {
             return (
               <Task key={task.id} task={task}/>
