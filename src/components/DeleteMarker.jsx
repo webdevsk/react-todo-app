@@ -1,11 +1,9 @@
-import { useContext } from 'react';
-import { TaskContext } from './TaskList'
+
 
 
 export default function DeleteMarker({id, className}) {
-  const {deleteTask} = useContext(TaskContext)
   function handleDelete(){
-    deleteTask(id)
+    // deleteTask(id)
   }
   
   return (

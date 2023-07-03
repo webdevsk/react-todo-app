@@ -1,18 +1,30 @@
-import ScrollToTop from 'react-scroll-to-top';
-import FloatingInput from './components/FloatingInput';
-import Heading from './components/Heading';
-import TaskList from "./components/TaskList";
-import SideMenu from './components/SideMenu';
+import ScrollToTop from 'react-scroll-to-top'
+import Heading from './components/Heading'
+import TaskList from "./components/TaskList"
+import SideMenu from './components/SideMenu'
+import { Outlet, useLoaderData } from 'react-router-dom';
+
+export async function loader(){
+  const rawData = localStorage.getItem('TODOS')
+  if (rawData === null || rawData === '') return []
+  const categories = JSON.parse(rawData).map(task => task.category)
+  return { categories }
+}
+
 
 function App() {
+  const {categories} = useLoaderData()
+  // console.log(categories)
   return (
     <>
     {/* Core components */}
     <SideMenu />
 
     <Heading className="max-w-2xl mx-auto px-8 mb-4 mt-24"/>
-
-    <TaskList className="max-w-2xl mx-auto px-8" />
+    <div id="taskContainer">
+      <Outlet />
+    </div>
+    {/* <TaskList className="max-w-2xl mx-auto px-8" /> */}
 
     {/* Some UI elements */}
     <div className="fixed top-0 left-0 w-full h-2 bg-amber-500"></div>

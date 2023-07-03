@@ -1,13 +1,37 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App, { loader as appLoader } from './App.jsx'
 import './index.css'
-import { ThemeProvider } from "@material-tailwind/react";
+import { ThemeProvider } from "@material-tailwind/react"
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"
+import ErrorPage from './error-page.jsx';
+import TaskList, { loader as taskLoader, action as taskAction } from './components/TaskList.jsx';
+
+const router = createBrowserRouter([
+  {
+  path: '/',
+  element: <App />,
+  loader: appLoader,
+  errorElement: <ErrorPage />,
+  children: [
+    {
+      path: ':category',
+      element: <TaskList />,
+      loader: taskLoader,
+      action: taskAction,
+      errorElement: <ErrorPage />,
+    }
+  ]
+  }
+])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>,
 )

@@ -22,7 +22,8 @@ const extendedKeyframes = {
 }
 
 const extendedFontFamily = {
-  'calistoga': ['Calistoga', ...defaultTheme.fontFamily.serif]
+  'calistoga': ['Calistoga', ...defaultTheme.fontFamily.serif],
+  'sans'     : ['Poppins', ...defaultTheme.fontFamily.sans]
 }
 
 export default withMT({

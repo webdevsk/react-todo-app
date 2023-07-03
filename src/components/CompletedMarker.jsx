@@ -1,10 +1,7 @@
 import { useContext, useId } from 'react'
 import { Checkbox } from "@material-tailwind/react"
-import { TaskContext } from './TaskList'
-// Tooltip is not a container element
 
 export default function CompletedMarker({id, completed, className, color}) {
-  const {handleUpdateTask} = useContext(TaskContext)
   
   const elmid = useId()
   function handleChange({currentTarget}){
