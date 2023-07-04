@@ -54,12 +54,12 @@ export default function SideMenu() {
           <List className='px-4 capitalize'>
             {categories.map(category => {
               return(
-                <NavLink to={`/${category}`} className='group'>
+                <NavLink key={category} to={`/${category}`} className='group'>
 
                   <ListItem className={`group-[.active]:bg-gray-300`}>
                     {category}
                   </ListItem>
-                  
+
                 </NavLink>
               )
             })}

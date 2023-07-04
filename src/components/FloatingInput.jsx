@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { IconButton, Input, Tooltip } from "@material-tailwind/react"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { Form } from "react-router-dom";
+import { Form, useFetcher } from "react-router-dom";
 import { useEffect } from "react";
 
 function FloatingInput({className, tasks}) {
+    const fetcher = useFetcher()
     useEffect(()=>{
         document.querySelector('#taskInput').value = ""
     }, [tasks])
@@ -13,7 +14,7 @@ function FloatingInput({className, tasks}) {
     <>
     <div className="fixed bottom-12 w-full">
         <div className={`${className} rounded-md`}>
-            <Form method="post" className="appearance-none w-full block relative">
+            <fetcher.Form method="post" className="appearance-none w-full block relative">
                 <Input 
                 id="taskInput"
                 color="amber" 
@@ -37,7 +38,7 @@ function FloatingInput({className, tasks}) {
                         <FontAwesomeIcon icon={faPlus} size="sm" />
                     </IconButton>
                 </Tooltip>
-            </Form>
+            </fetcher.Form>
         </div>
     </div>
     </>
