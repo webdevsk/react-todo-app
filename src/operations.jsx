@@ -1,16 +1,15 @@
 import { nanoid } from "nanoid";
 
+async function getParsedLocalData(label){
+    const rawData = localStorage.getItem(label)
+    if (rawData === null || rawData === '[]') return []
+    return JSON.parse(rawData)
+}
 
 export async function createTask({label, category}) {
-    let rawData = localStorage.getItem('TODOS')
-    let tasks
-    if (rawData === null || rawData === '[]'){
-        tasks = []
-    } else {
-        tasks = JSON.parse(rawData) 
-    }
+    const storedData = getParsedLocalData('TODOS')
 
-    const saveData = [...tasks, {
+    const newData = [...storedData, {
         id: nanoid(),
         label: label, 
         category: category,
@@ -18,40 +17,42 @@ export async function createTask({label, category}) {
         important: false
     }]
 
-    localStorage.setItem('TODOS', JSON.stringify(saveData))
+    localStorage.setItem('TODOS', JSON.stringify(newData))
 
 }
 
 
 
 export async function getTasks(category) {
-    const rawData = localStorage.getItem('TODOS')
-    if (rawData === null || rawData === '[]') return { tasks: [] }
-
-    const tasks = JSON.parse(rawData).filter(task => task.category === category)
-  
-    return {tasks}
+    const storedData = getParsedLocalData('TODOS')
+    let tasks
+    storedData.length === 0
+    ? tasks = []
+    : tasks = storedData.filter(task => task.category === category)
+    return { tasks }
 }
 
 
 export async function getCategories(){
-    const rawData = localStorage.getItem('TODOS')
-    if (rawData === null || rawData === '[]') return {categories: ['home']}
-    const tasks = JSON.parse(rawData)
+    const storedData = getParsedLocalData('TODOS')
+    let categories
     //Unique keys
-    const categories = [...new Map(tasks.map(task => [task.category, task])).keys()]
-    return {categories}
+    storedData.length === 0
+    ? categories = ['home']
+    : categories = [...new Map(storedData.map(task => [task.category, task])).keys()]
+    return { categories }
 }
 
 export async function deleteTask(id){
-    // console.log(id)
-    const rawData = localStorage.getItem('TODOS')
-    if (rawData === null || rawData === '[]') return { success: false, message: 'No tasks available.' }
-    const tasks = JSON.parse(rawData)
-    const saveData = tasks.filter(task => task.id !== id)
-    localStorage.setItem('TODOS', JSON.stringify(saveData))
+    const storedData = getParsedLocalData('TODOS')
+    let newData
+    storedData.length === 0
+    ? newData = []
+    : newData = storedData.filter(task => task.id !== id)
 
-    if (tasks.length > saveData.length){
+    localStorage.setItem('TODOS', JSON.stringify(newData))
+
+    if (newData.length < storedData.length){
         return { success: true, message: 'Item deleted.'}
     } else {
         return { success: false, message: 'Item not found.'}
@@ -59,12 +60,11 @@ export async function deleteTask(id){
 }
 
 export async function updateTask(props){
-    // console.log(props)
-    const rawData = localStorage.getItem('TODOS')
-    if (rawData === null || rawData === '[]') return { success: false, message: 'No tasks available.' }
-
-    const tasks = JSON.parse(rawData)
-    const saveData = tasks.map(task => {
+    const storedData = getParsedLocalData('TODOS')
+    let newData
+    storedData.length === 0
+    ? newData = []
+    : newData = storedData.map(task => {
         if (task.id !== props.id) return task
 
         if (Object.prototype.hasOwnProperty.call(props, 'completed')){
@@ -84,5 +84,11 @@ export async function updateTask(props){
         }
     })
 
-    localStorage.setItem('TODOS', JSON.stringify(saveData))
+    localStorage.setItem('TODOS', JSON.stringify(newData))
+
+    if (newData.length === 0){
+        return { success: false, message: 'Cannot operate on empty array.'}
+    } else {
+        return { success: true, message: 'Item updated successfully.'}
+    }
 }
