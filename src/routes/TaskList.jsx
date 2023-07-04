@@ -15,7 +15,7 @@ export async function action({params: {category}, request}){
   const formData = await request.formData()
   const entries = Object.fromEntries(formData)
   await createTask({label: entries.label, category: category})
-  return null
+  return redirect(`/${category}`)
   //using fetcher so redirection is not needed. But it is recommended to return something so returning null
 }
 

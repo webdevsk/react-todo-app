@@ -14,7 +14,7 @@ import ErrorPage from './error-page.jsx';
 import TaskList, { loader as taskLoader, action as taskAction } 
 from './routes/TaskList.jsx';
 import { action as destroyAction } from './routes/destroy.jsx'
-
+import { action as updateAction } from './routes/update.jsx'
 const router = createBrowserRouter([
   {
   path: '/',
@@ -36,7 +36,11 @@ const router = createBrowserRouter([
     {
       path: ':category/destroy',
       action: destroyAction,
-    }
+    },
+    {
+      path: ':category/update',
+      action: updateAction,
+    },
   ]
   }
 ])

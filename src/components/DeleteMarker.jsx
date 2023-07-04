@@ -1,10 +1,7 @@
 import { useFetcher } from "react-router-dom";
 
-
-import { Form } from 'react-router-dom'
 export default function DeleteMarker({id, className}) {
   const fetcher = useFetcher()
-
   
   return (
     <fetcher.Form method='post' action='destroy'>
