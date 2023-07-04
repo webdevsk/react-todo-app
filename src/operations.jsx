@@ -1,13 +1,13 @@
 import { nanoid } from "nanoid";
 
 async function getParsedLocalData(label){
-    const rawData = localStorage.getItem(label)
+    const rawData = await localStorage.getItem(label)
     if (rawData === null || rawData === '[]') return []
     return JSON.parse(rawData)
 }
 
 export async function createTask({label, category}) {
-    const storedData = getParsedLocalData('TODOS')
+    const storedData = await getParsedLocalData('TODOS')
 
     const newData = [...storedData, {
         id: nanoid(),
@@ -24,7 +24,7 @@ export async function createTask({label, category}) {
 
 
 export async function getTasks(category) {
-    const storedData = getParsedLocalData('TODOS')
+    const storedData = await getParsedLocalData('TODOS')
     let tasks
     storedData.length === 0
     ? tasks = []
@@ -34,7 +34,7 @@ export async function getTasks(category) {
 
 
 export async function getCategories(){
-    const storedData = getParsedLocalData('TODOS')
+    const storedData = await getParsedLocalData('TODOS')
     let categories
     //Unique keys
     storedData.length === 0
@@ -44,11 +44,10 @@ export async function getCategories(){
 }
 
 export async function deleteTask(id){
-    const storedData = getParsedLocalData('TODOS')
-    let newData
-    storedData.length === 0
-    ? newData = []
-    : newData = storedData.filter(task => task.id !== id)
+    const storedData = await getParsedLocalData('TODOS')
+    const newData = storedData.length === 0
+    ? []
+    : storedData.filter(task => task.id !== id)
 
     localStorage.setItem('TODOS', JSON.stringify(newData))
 
@@ -60,11 +59,10 @@ export async function deleteTask(id){
 }
 
 export async function updateTask(props){
-    const storedData = getParsedLocalData('TODOS')
-    let newData
-    storedData.length === 0
-    ? newData = []
-    : newData = storedData.map(task => {
+    const storedData = await getParsedLocalData('TODOS')
+    const newData = storedData.length === 0
+    ? []
+    : storedData.map(task => {
         if (task.id !== props.id) return task
 
         if (Object.prototype.hasOwnProperty.call(props, 'completed')){
@@ -90,5 +88,41 @@ export async function updateTask(props){
         return { success: false, message: 'Cannot operate on empty array.'}
     } else {
         return { success: true, message: 'Item updated successfully.'}
+    }
+}
+
+export async function markAllDone(category){
+    const storedData = await getParsedLocalData('TODOS')
+    const newData = storedData.length === 0
+    ? []
+    : storedData.map(task => {
+        if (task.category !== category) return task
+        return {...task, completed: true}
+    })
+
+    localStorage.setItem('TODOS', JSON.stringify(newData))
+
+    if (newData.length === 0){
+        return { success: false, message: 'Cannot operate on empty array.'}
+    } else {
+        return { success: true, message: 'Item updated successfully.'}
+    }
+}
+
+export async function deleteAllMarked(category){
+    const storedData = await getParsedLocalData('TODOS')
+    const newData = storedData.length === 0
+    ? []
+    : storedData.map(task => {
+        if (task.category !== category) return task
+        if (task.completed !== true) return task
+    })
+
+    localStorage.setItem('TODOS', JSON.stringify(newData))
+
+    if (newData.length === 0){
+        return { success: false, message: 'Cannot operate on empty array.'}
+    } else {
+        return { success: true, message: 'Items deleted successfully.'}
     }
 }
