@@ -7,19 +7,18 @@ import { createTask, getTasks } from '../operations'
 
 export async function loader({params}){
   const {tasks} = await getTasks(params.category)
-  // console.log('loader',tasks)
   return {tasks}
 }
 
 export async function action({params: {category}, request}){
-  // console.log(category)
   const formData = await request.formData()
   const entries = Object.fromEntries(formData)
   await createTask({label: entries.label, category: category})
-  return redirect(`/${category}`)
+  return null
+  //using fetcher so redirection is not needed. But it is recommended to return something so returning null
 }
 
-export default function TaskList({className}) {
+export default function TaskList() {
   const {tasks} = useLoaderData()
 
   const prevLength = useRef(tasks.length)
