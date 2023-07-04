@@ -2,7 +2,7 @@ import { List, Typography } from '@material-tailwind/react'
 import Task from './Task'
 import { useEffect, useRef } from 'react'
 import FloatingInput from './FloatingInput'
-import { redirect, useLoaderData } from 'react-router-dom'
+import { redirect, useLoaderData, useNavigation } from 'react-router-dom'
 import { createTask, getTasks } from '../operations'
 
 export async function loader({params}){
@@ -70,10 +70,11 @@ export default function TaskList({className}) {
   //     return prevTasks.filter(task => task.completed === false)
   //   })
   // }
-
+  const navigation = useNavigation()
+  //navigation.state returns "idle" | "submitting" | "loading"
   return (
     <>
-    <div className={`container pb-28 max-w-2xl mx-auto px-8`}>
+    <div className={`container pb-28 max-w-2xl mx-auto px-8 transition-all ${navigation.loading === 'idle' && 'opacity-50'}`}>
       <div className="bulkManager rounded-lg flex text-gray-500 flex-wrap items-center mb-2 justify-between">
 
         {/* <Tooltip content='Mark all as completed' animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>

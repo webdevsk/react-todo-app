@@ -3,12 +3,11 @@ import Heading from './components/Heading'
 import TaskList from "./components/TaskList"
 import SideMenu from './components/SideMenu'
 import { Outlet, useLoaderData } from 'react-router-dom';
+import { getCategories } from './operations';
 
 export async function loader(){
-  const rawData = localStorage.getItem('TODOS')
-  if (rawData === null || rawData === '') return []
-  const categories = JSON.parse(rawData).map(task => task.category)
-  return { categories }
+  const {categories} = await getCategories()
+  return {categories}
 }
 
 
