@@ -1,7 +1,7 @@
 import { List, Typography } from '@material-tailwind/react'
-import Task from './Task'
+import Task from '../components/Task'
 import { useEffect, useRef } from 'react'
-import FloatingInput from './FloatingInput'
+import FloatingInput from '../components/FloatingInput'
 import { redirect, useLoaderData, useNavigation } from 'react-router-dom'
 import { createTask, getTasks } from '../operations'
 

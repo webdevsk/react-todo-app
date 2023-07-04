@@ -1,9 +1,9 @@
 import ScrollToTop from 'react-scroll-to-top'
-import Heading from './components/Heading'
-import TaskList from "./components/TaskList"
-import SideMenu from './components/SideMenu'
+import Heading from '../components/Heading'
+import TaskList from "./TaskList"
+import SideMenu from '../components/SideMenu'
 import { Outlet, useLoaderData } from 'react-router-dom';
-import { getCategories } from './operations';
+import { getCategories } from '../operations';
 
 
 export async function loader(){
@@ -12,7 +12,7 @@ export async function loader(){
 }
 
 
-function App() {
+function Root() {
   const {categories} = useLoaderData()
   // console.log(categories)
   return (
@@ -39,4 +39,4 @@ function App() {
   )
 }
 
-export default App
+export default Root
