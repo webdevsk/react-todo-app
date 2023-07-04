@@ -1,10 +1,12 @@
-import { List, Typography } from '@material-tailwind/react'
+import { List, Tooltip, Typography } from '@material-tailwind/react'
 import Task from '../components/Task'
 import { useEffect, useRef } from 'react'
 import FloatingInput from '../components/FloatingInput'
-import { redirect, useLoaderData, useNavigation } from 'react-router-dom'
+import { redirect, useFetcher, useLoaderData, useNavigation } from 'react-router-dom'
 import { createTask, getTasks } from '../operations'
 import Heading from '../components/Heading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faListCheck } from '@fortawesome/free-solid-svg-icons'
 
 export async function loader({params}){
   const {tasks} = await getTasks(params.category)
@@ -30,46 +32,8 @@ export default function TaskList() {
     prevLength.current = tasks.length
   }, [tasks])
 
-
-  // function handleNewTask(label){
-  //   setNewTask(prevTasks => {
-  //     return [...prevTasks, {id: nanoid(), completed: false, important: false, label: label}]
-  //   })
-  // }
-
-  // function handleUpdateTask(id, obj){
-  //   // console.log(id, obj)
-  //   setNewTask(prevTasks => {
-  //     return prevTasks.map(task => {
-  //       if (task.id === id){
-  //         return {...task, ...obj}
-  //       }
-  //       return task
-  //     })
-  //   })
-  // }
-
-  // function deleteTask(id){
-    
-  //   setNewTask(prevTasks => {
-  //     return prevTasks.filter(task => task.id !== id)
-  //   })
-  // }
-  
-  // function markAllCompleted(){
-  //   setNewTask(prevTasks => {
-  //     return prevTasks.map(task => {
-  //       return {...task, completed: true}
-  //     })
-  //   })
-  // }
-
-  // function deleteAllMarked(){
-  //   setNewTask(prevTasks => {
-  //     return prevTasks.filter(task => task.completed === false)
-  //   })
-  // }
   const navigation = useNavigation()
+  const fetcher = useFetcher()
   //navigation.state returns "idle" | "submitting" | "loading"
   return (
     <>
@@ -78,11 +42,13 @@ export default function TaskList() {
     <div className={`container pb-28 max-w-2xl mx-auto px-8 transition-all ${navigation.loading === 'idle' && 'opacity-50'}`}>
       <div className="bulkManager rounded-lg flex text-gray-500 flex-wrap items-center mb-2 justify-between">
 
-        {/* <Tooltip content='Mark all as completed' animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
-          <button className={`w-6 h-6 m-3 rounded-sm shadow-none group bg-transparent`} onClick={markAllCompleted}>
-            <FontAwesomeIcon className={`text-xl group-hover:text-amber-500 transition-colors`} icon={faListCheck} />
-          </button>
-        </Tooltip> */}
+        <fetcher.Form method='post' action='allcompleted'>
+          <Tooltip content='Mark all as completed' animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
+            <button type='submit' className={`w-6 h-6 m-3 rounded-sm shadow-none group bg-transparent`}>
+              <FontAwesomeIcon className={`text-xl group-hover:text-amber-500 transition-colors`} icon={faListCheck} />
+            </button>
+          </Tooltip>
+        </fetcher.Form>
 
         <Typography variant="h6" className={`flex-1 mx-4`}>Tasks</Typography>
 

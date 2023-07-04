@@ -15,6 +15,9 @@ import TaskList, { loader as taskLoader, action as taskAction }
 from './routes/TaskList.jsx';
 import { action as destroyAction } from './routes/destroy.jsx'
 import { action as updateAction } from './routes/update.jsx'
+import { action as allCompletedAction } from './routes/allcomplete.jsx'
+
+
 const router = createBrowserRouter([
   {
   path: '/',
@@ -40,6 +43,10 @@ const router = createBrowserRouter([
     {
       path: ':category/update',
       action: updateAction,
+    },
+    {
+      path: ':category/allcompleted',
+      action: allCompletedAction,
     },
   ]
   }

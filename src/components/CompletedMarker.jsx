@@ -23,7 +23,7 @@ export default function CompletedMarker({id, completed, className, color}) {
     <fetcher.Form method='post' action='update'>
       <Checkbox ripple={false} 
       onChange={handleChange}
-      defaultChecked={completed}
+      checked={completed}
       id={elmid} 
       containerProps={{htmlFor: elmid, className: 'p-4'}} 
       className={`rounded-full ${className}`} 
