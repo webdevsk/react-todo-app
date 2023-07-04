@@ -5,6 +5,7 @@ import SideMenu from './components/SideMenu'
 import { Outlet, useLoaderData } from 'react-router-dom';
 import { getCategories } from './operations';
 
+
 export async function loader(){
   const {categories} = await getCategories()
   return {categories}

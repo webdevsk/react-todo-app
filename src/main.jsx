@@ -1,4 +1,6 @@
 import React from 'react'
+import '@fontsource/poppins'
+import '@fontsource/calistoga'
 import ReactDOM from 'react-dom/client'
 import App, { loader as appLoader } from './App.jsx'
 import './index.css'
