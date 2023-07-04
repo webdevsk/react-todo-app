@@ -5,6 +5,7 @@ import './index.css'
 import { ThemeProvider } from "@material-tailwind/react"
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom"
 import ErrorPage from './error-page.jsx';
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   loader: appLoader,
   errorElement: <ErrorPage />,
   children: [
+    {
+      index: true,
+      element: <Navigate to='/home' />,
+    },
     {
       path: ':category',
       element: <TaskList />,
