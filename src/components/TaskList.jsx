@@ -1,19 +1,16 @@
-import { Button, List, Tooltip, Typography, Menu, MenuHandler, MenuList, MenuItem } from '@material-tailwind/react'
+import { List, Typography } from '@material-tailwind/react'
 import Task from './Task'
-import { useState, useEffect, useRef, createContext } from 'react'
+import { useEffect, useRef } from 'react'
 import FloatingInput from './FloatingInput'
-import { nanoid } from 'nanoid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faListCheck } from '@fortawesome/free-solid-svg-icons'
-import createTask from '../operations/createTask';
-import getTasks from '../operations/getTasks';
-import { redirect, useLoaderData } from 'react-router-dom';
+import { redirect, useLoaderData } from 'react-router-dom'
+import { createTask, getTasks } from '../operations'
 
 export async function loader({params}){
   const {tasks} = await getTasks(params.category)
   // console.log('loader',tasks)
   return {tasks}
 }
+
 export async function action({params: {category}, request}){
   // console.log(category)
   const formData = await request.formData()
