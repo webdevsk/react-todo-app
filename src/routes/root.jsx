@@ -2,7 +2,7 @@ import ScrollToTop from 'react-scroll-to-top'
 import Heading from '../components/Heading'
 import TaskList from "./TaskList"
 import SideMenu from '../components/SideMenu'
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { getCategories } from '../operations';
 
 
@@ -13,14 +13,11 @@ export async function loader(){
 
 
 function Root() {
-  const {categories} = useLoaderData()
-  // console.log(categories)
   return (
     <>
     {/* Core components */}
     <SideMenu />
 
-    <Heading className="max-w-2xl mx-auto px-8 mb-4 mt-24"/>
     <div id="taskContainer">
       <Outlet />
     </div>

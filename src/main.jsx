@@ -11,7 +11,9 @@ import {
   RouterProvider,
 } from "react-router-dom"
 import ErrorPage from './error-page.jsx';
-import TaskList, { loader as taskLoader, action as taskAction } from './routes/TaskList.jsx';
+import TaskList, { loader as taskLoader, action as taskAction } 
+from './routes/TaskList.jsx';
+import { action as destroyAction } from './routes/destroy.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
       loader: taskLoader,
       action: taskAction,
       errorElement: <ErrorPage />,
+    },
+    {
+      path: ':category/destroy',
+      action: destroyAction,
     }
   ]
   }

@@ -4,10 +4,11 @@ import { useEffect, useRef } from 'react'
 import FloatingInput from '../components/FloatingInput'
 import { redirect, useLoaderData, useNavigation } from 'react-router-dom'
 import { createTask, getTasks } from '../operations'
+import Heading from '../components/Heading';
 
 export async function loader({params}){
   const {tasks} = await getTasks(params.category)
-  return {tasks}
+  return {tasks, category: params.category}
 }
 
 export async function action({params: {category}, request}){
@@ -19,8 +20,7 @@ export async function action({params: {category}, request}){
 }
 
 export default function TaskList() {
-  const {tasks} = useLoaderData()
-
+  const {tasks, category} = useLoaderData()
   const prevLength = useRef(tasks.length)
   useEffect(() => {
     // Run only when new task is added
@@ -73,6 +73,8 @@ export default function TaskList() {
   //navigation.state returns "idle" | "submitting" | "loading"
   return (
     <>
+    <Heading category={category} className="max-w-2xl mx-auto px-8 mb-4 mt-24"/>
+
     <div className={`container pb-28 max-w-2xl mx-auto px-8 transition-all ${navigation.loading === 'idle' && 'opacity-50'}`}>
       <div className="bulkManager rounded-lg flex text-gray-500 flex-wrap items-center mb-2 justify-between">
 

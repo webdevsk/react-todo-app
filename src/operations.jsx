@@ -40,6 +40,21 @@ export async function getCategories(){
     const tasks = JSON.parse(rawData)
     //Unique keys
     const categories = [...new Map(tasks.map(task => [task.category, task])).keys()]
-    console.log(categories)
+    // console.log(categories)
     return {categories}
+}
+
+export async function deleteTask(id){
+    // console.log(id)
+    const rawData = localStorage.getItem('TODOS')
+    if (rawData === null || rawData === '') return { success: false, message: 'No tasks available.' }
+    const tasks = JSON.parse(rawData)
+    const saveData = tasks.filter(task => task.id !== id)
+    localStorage.setItem('TODOS', JSON.stringify(saveData))
+
+    if (tasks.length > saveData.length){
+        return { success: true, message: 'Item deleted.'}
+    } else {
+        return { success: false, message: 'Item not found.'}
+    }
 }

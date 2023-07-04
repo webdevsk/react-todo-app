@@ -21,7 +21,7 @@ export default function Task({task}){
         {/* <ImportantMarker {...task} color="amber" /> */}
 
         {/* Delete marker. Use stroke color class */}
-        {/* <DeleteMarker {...task} className="stroke-amber-500"/> */}
+        <DeleteMarker {...task} className="stroke-amber-500"/>
     </div>
   )
 }
