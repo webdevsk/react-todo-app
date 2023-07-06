@@ -4,7 +4,7 @@ import ImportantMarker from './ImportantMarker'
 
 export default function Task({task}){
   return (
-    <div className={`task-item bg-white flex items-stretch border-solid border border-gray-200 rounded-lg shadow-md relative overflow-hidden animate-toUp [animation-fill-mode:forwards] -z-0`}>
+    <div className={`task-item bg-white flex items-center border-solid border border-gray-200 rounded-lg shadow-md relative overflow-hidden animate-toUp [animation-fill-mode:forwards] -z-0`}>
 
         {/* Completed marker. Use Border color class */}
         <CompletedMarker {...task} className="border-amber-500" color="amber" />
