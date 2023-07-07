@@ -113,11 +113,11 @@ export async function deleteAllMarked(category){
     const storedData = await getParsedLocalData('TODOS')
     const newData = storedData.length === 0
     ? []
-    : storedData.map(task => {
-        if (task.category !== category) return task
-        if (task.completed !== true) return task
+    : storedData.filter(task => {
+        if (task.category !== category) return true
+        if (task.completed === false) return true
+        return false
     })
-
     localStorage.setItem('TODOS', JSON.stringify(newData))
 
     if (newData.length === 0){

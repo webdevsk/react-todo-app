@@ -16,7 +16,7 @@ from './routes/TaskComponent.jsx';
 import { action as destroyAction } from './routes/destroy.jsx'
 import { action as updateAction } from './routes/update.jsx'
 import { action as allCompletedAction } from './routes/allcomplete.jsx'
-
+import { action as destroyCompleted } from './routes/destroyCompleted.jsx'
 
 const router = createBrowserRouter([
   {
@@ -47,6 +47,10 @@ const router = createBrowserRouter([
     {
       path: ':category/allcompleted',
       action: allCompletedAction,
+    },
+    {
+      path: ':category/destroycompleted',
+      action: destroyCompleted,
     },
   ]
   }

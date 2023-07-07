@@ -1,4 +1,4 @@
-import { List, Tooltip, Typography } from '@material-tailwind/react'
+import { List, Tooltip, Typography, Menu, MenuHandler, MenuList, MenuItem } from '@material-tailwind/react'
 import Task from '../components/Task'
 import { useEffect, useRef } from 'react'
 import FloatingInput from '../components/FloatingInput'
@@ -52,26 +52,28 @@ export default function TaskComponent() {
 
         <Typography variant="h6" className={`flex-1 mx-4`}>Tasks</Typography>
 
-        {/* <Menu placement='bottom' lockScroll={true} dismiss={{
+        <Menu placement='bottom' lockScroll={true} dismiss={{
           isRequired: {itemPress:true},
           enabled: true,
           itemPress:true,
         }}>
         
           <MenuHandler>
-            <button className={`${newTask.filter(task => task.completed === true).length > 0 ? `block` : `hidden`}  animate-toUp focus-visible:!outline-0`}>
+            <button className={`${tasks.filter(task => task.completed === true).length > 0 ? `block` : `hidden`}  animate-toUp focus-visible:!outline-0`}>
               <Typography variant="h6" className={`text-red-500 mx-4`}>Delete all completed</Typography>
             </button>
           </MenuHandler>
           <MenuList>
-            <MenuItem className='!text-red-500 font-bold hover:!text-white !bg-transparent hover:!bg-red-500 text-center' onClick={deleteAllMarked}>
-              Confirm
-            </MenuItem>
+            <fetcher.Form method="post" action="destroycompleted">
+              <MenuItem type='submit' className='!text-red-500 font-bold hover:!text-white !bg-transparent hover:!bg-red-500 text-center'>
+                Confirm
+              </MenuItem>
+            </fetcher.Form>
             <MenuItem className='font-bold hover:!text-white hover:!bg-gray-500 text-center'>
               Cancel
             </MenuItem>
           </MenuList>
-        </Menu> */}
+        </Menu>
 
       </div>
 
