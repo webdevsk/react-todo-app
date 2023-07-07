@@ -1,41 +1,21 @@
-import { Button, Input, ListItem, ListItemSuffix, Tooltip } from "@material-tailwind/react";
-import { useEffect, useRef, useState } from "react";
-import { Form, Link, redirect, useLocation, useNavigate } from "react-router-dom";
+import { ListItem, ListItemSuffix, Tooltip } from "@material-tailwind/react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CategoryMaker(){
     const [link, setLink] = useState('')
-    console.log(link)
     const navigate = useNavigate()
-    const location = useLocation()
 
+    console.log(link)
+    const resetLink = () => setLink('')
     const handlePress = (e) => {
         if (e.isComposing || e.keyCode === 229) return
         if (e.key !== "Enter") return
-        setLink('')
+        resetLink()
         e.currentTarget.blur()
         navigate(`/${link}`)
     }
 
-    // useEffect(()=>{
-    //     setLink('')
-    // }, [location])
-
-    // useEffect(()=>{
-    //     inputRef.current.addEventListener('keydown', handlePress)
-    //     console.log(inputRef.current)
-    //     return () => {
-    //         inputRef.current.removeEventListener('keydown', handlePress)
-    //     }
-    // }, [])
-
-    // const handleSubmit = (e) => {
-    //     // console.log(e)
-    //     setLink(e.currentTarget.value)
-    // }
-
-    // const handleClear = (e) => {
-    //     setLink('')
-    // }
     return(
         <>
         <ListItem className="bg-gray-200 py-0 px-0">
@@ -52,7 +32,7 @@ export default function CategoryMaker(){
 
             <ListItemSuffix className={`${link === '' ? 'hidden' : ''}`}>
                 <Tooltip content='Reset'>
-                    <button aria-label='Reset'
+                    <button aria-label='Reset' onClick={resetLink}
                     className={`p-3 text-red-500 border-s border-gray-300 hover:bg-red-50 transition-colors`}
                     >
                         x

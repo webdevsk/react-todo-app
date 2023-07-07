@@ -11,8 +11,8 @@ import {
   RouterProvider,
 } from "react-router-dom"
 import ErrorPage from './error-page.jsx';
-import TaskList, { loader as taskLoader, action as taskAction } 
-from './routes/TaskList.jsx';
+import TaskComponent, { loader as taskLoader, action as taskAction } 
+from './routes/TaskComponent.jsx';
 import { action as destroyAction } from './routes/destroy.jsx'
 import { action as updateAction } from './routes/update.jsx'
 import { action as allCompletedAction } from './routes/allcomplete.jsx'
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     },
     {
       path: ':category',
-      element: <TaskList />,
+      element: <TaskComponent />,
       loader: taskLoader,
       action: taskAction,
       errorElement: <ErrorPage />,

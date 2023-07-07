@@ -21,7 +21,7 @@ export async function action({params: {category}, request}){
   //using fetcher so redirection is not needed. But it is recommended to return something so returning null
 }
 
-export default function TaskList() {
+export default function TaskComponent() {
   const {tasks, category} = useLoaderData()
   const prevLength = useRef(tasks.length)
   useEffect(() => {

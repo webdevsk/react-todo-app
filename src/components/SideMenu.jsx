@@ -2,12 +2,14 @@ import { Drawer, List, Typography, ListItem, ListItemPrefix, ListItemSuffix, Car
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { Link, NavLink, useLoaderData } from 'react-router-dom';
+import { Link, NavLink, useLoaderData, useParams } from 'react-router-dom';
 import CategoryMaker from './CategoryMaker';
 
 export default function SideMenu() {
 
   const {categories} = useLoaderData()
+  const {category} = useParams()
+
   const devMode = false
   const [open, setOpen] = useState(()=>{
     if (!devMode && window.innerWidth <= 1400) return false
@@ -63,7 +65,8 @@ export default function SideMenu() {
                 </NavLink>
               )
             })}
-
+            {/* Additions to the categories list */}
+            <PlaceholderCategory categories = {categories} category = {category} />
             <CategoryMaker />
 
           </List>
@@ -123,4 +126,18 @@ function BurgerMenuBtn({id, className, open, toggleDrawer}){
       </button>
     </div>
   )
+}
+
+function PlaceholderCategory({categories, category}){
+  if (categories.includes(category)){
+    return null
+  } else {
+    return(
+      <NavLink to={`/${category}`} className={`group`}>
+        <ListItem className={`group-[.active]:bg-gray-300`}>
+          {category}
+        </ListItem>
+      </NavLink>
+    )
+  }
 }

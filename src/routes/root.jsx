@@ -1,6 +1,6 @@
 import ScrollToTop from 'react-scroll-to-top'
 import Heading from '../components/Heading'
-import TaskList from "./TaskList"
+import TaskComponent from "./TaskComponent"
 import SideMenu from '../components/SideMenu'
 import { Outlet } from 'react-router-dom';
 import { getCategories } from '../operations';
@@ -21,8 +21,6 @@ function Root() {
     <div id="taskContainer">
       <Outlet />
     </div>
-    {/* <TaskList className="max-w-2xl mx-auto px-8" /> */}
-
     {/* Some UI elements */}
     <div className="fixed top-0 left-0 w-full h-2 bg-amber-500"></div>
 
