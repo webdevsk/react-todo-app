@@ -9,7 +9,7 @@ export default function SideMenu() {
 
   const {categories} = useLoaderData()
   const {category} = useParams()
-
+  console.log(categories)
   const devMode = false
   const [open, setOpen] = useState(()=>{
     if (!devMode && window.innerWidth <= 1400) return false
@@ -129,7 +129,7 @@ function BurgerMenuBtn({id, className, open, toggleDrawer}){
 }
 
 function PlaceholderCategory({categories, category}){
-  if (categories.includes(category)){
+  if (categories.includes(category) || category === 'home'){
     return null
   } else {
     return(
