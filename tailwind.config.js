@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import withMT from "@material-tailwind/react/utils/withMT"
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const extendedAnimations = {
   ripple : 'ripple .7s linear',
@@ -20,6 +21,11 @@ const extendedKeyframes = {
           }
 }
 
+const extendedFontFamily = {
+  'calistoga': ['Calistoga', ...defaultTheme.fontFamily.serif],
+  'sans'     : ['Poppins', ...defaultTheme.fontFamily.sans]
+}
+
 export default withMT({
   content: [
     "./index.html",
@@ -29,7 +35,8 @@ export default withMT({
   theme: {
     extend: {
       animation: extendedAnimations,
-      keyframes: extendedKeyframes
+      keyframes: extendedKeyframes,
+      fontFamily: extendedFontFamily
     },
   },
   plugins: [],

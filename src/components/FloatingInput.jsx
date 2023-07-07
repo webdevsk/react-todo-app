@@ -1,26 +1,31 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { IconButton, Input, Tooltip } from "@material-tailwind/react"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
-import { useContext, useState } from "react"
-import { TaskContext } from './TaskList'
+import { Form, useFetcher } from "react-router-dom";
+import { useEffect } from "react";
 
-function FloatingInput({className}) {
-    const {handleNewTask} = useContext(TaskContext)
-    const [inputValue, setInputValue] = useState('')
-    function handleSubmit(e){
-        e.preventDefault()
-        console.log(e)
-        handleNewTask(inputValue)
-        setInputValue('')
-    }
+function FloatingInput({className, tasks}) {
+    const fetcher = useFetcher()
+    useEffect(()=>{
+        document.querySelector('#taskInput').value = ""
+    }, [tasks])
+
   return (
     <>
     <div className="fixed bottom-12 w-full">
         <div className={`${className} rounded-md`}>
-            <form method="POST" onSubmit={handleSubmit}className="appearance-none w-full block relative">
-                <Input color="amber" type="text" required value={inputValue} onChange={(e)=>setInputValue(e.target.value)} placeholder="New task" containerProps={{className: "h-12"}}
+            <fetcher.Form method="post" className="appearance-none w-full block relative">
+                <Input 
+                id="taskInput"
+                color="amber" 
+                type="text" 
+                required 
+                name="label"
+                placeholder="Get started!" 
+                containerProps={{className: "h-12"}}
                 labelProps={{className: "hidden"}}
-                className={`pr-20 focus:border-t-amber-500 !border-amber-500 ring-4 ring-amber-500 !border  bg-white shadow-xl shadow-blue-gray-900/30 placeholder:text-base placeholder:text-blue-gray-200 text-blue-gray-500`} maxLength={50}/>
+                className={`pr-20 focus:border-t-amber-500 !border-amber-500 !text-base ring-4 ring-amber-500 !border  bg-white shadow-xl shadow-blue-gray-900/30 placeholder:text-base placeholder:text-blue-gray-200 !text-black`} 
+                maxLength={50}/>
 
                 <Tooltip content="Add new task"
                 animate={{
@@ -33,7 +38,7 @@ function FloatingInput({className}) {
                         <FontAwesomeIcon icon={faPlus} size="sm" />
                     </IconButton>
                 </Tooltip>
-            </form>
+            </fetcher.Form>
         </div>
     </div>
     </>

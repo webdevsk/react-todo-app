@@ -2,8 +2,14 @@ import { Drawer, List, Typography, ListItem, ListItemPrefix, ListItemSuffix, Car
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { Link, NavLink, useLoaderData, useParams } from 'react-router-dom';
+import CategoryMaker from './CategoryMaker';
 
 export default function SideMenu() {
+
+  const {categories} = useLoaderData()
+  const {category} = useParams()
+  console.log(categories)
   const devMode = false
   const [open, setOpen] = useState(()=>{
     if (!devMode && window.innerWidth <= 1400) return false
@@ -42,10 +48,28 @@ export default function SideMenu() {
     className={`z-40 shadow-sm bg-white`} >
 
       <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap`}>
-        <CardBody shadow={false} className={`flex-1`}>
-          <a href="/">
-            <Typography variant='h4' className={`mt-16`}>TODO App</Typography> 
-          </a>
+        <CardBody className={`flex-1 px-0`}>
+          <Link to="/">
+            <Typography variant='h4' className={`mt-20 mb-8 px-6`}>TODO App</Typography> 
+          </Link>
+
+          <List className='px-4 capitalize'>
+            {categories.map(category => {
+              return(
+                <NavLink key={category} to={`/${category}`} className='group'>
+
+                  <ListItem className={`group-[.active]:bg-gray-300`}>
+                    {category}
+                  </ListItem>
+
+                </NavLink>
+              )
+            })}
+            {/* Additions to the categories list */}
+            <PlaceholderCategory categories = {categories} category = {category} />
+            <CategoryMaker />
+
+          </List>
         </CardBody>
 
         <CardFooter>
@@ -58,7 +82,7 @@ export default function SideMenu() {
               <div className="flex gap-4 mt-2 flex-wrap">
 
                 <a href="https://github.com/webdevsk" target='_blank' rel='noreferrer'>
-                  <Tooltip content="GitHub" target='_blank' rel='noreferrer'>
+                  <Tooltip content="GitHub" animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
                     <IconButton className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
                       <FontAwesomeIcon className={`w-7 h-7 mt-[2px] text-gray-900`} icon={faGithubSquare} />
                     </IconButton>
@@ -66,7 +90,7 @@ export default function SideMenu() {
                 </a>
 
                 <a href="https://www.linkedin.com/in/webdevsk/" target='_blank' rel='noreferrer'>
-                  <Tooltip content="Linkedin">
+                  <Tooltip content="Linkedin" animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
                     <IconButton className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
                       <FontAwesomeIcon className={`w-7 h-7 mt-[2px] text-gray-900`} icon={faLinkedin} />
                     </IconButton>
@@ -102,4 +126,18 @@ function BurgerMenuBtn({id, className, open, toggleDrawer}){
       </button>
     </div>
   )
+}
+
+function PlaceholderCategory({categories, category}){
+  if (categories.includes(category) || category === 'home'){
+    return null
+  } else {
+    return(
+      <NavLink to={`/${category}`} className={`group`}>
+        <ListItem className={`group-[.active]:bg-gray-300`}>
+          {category}
+        </ListItem>
+      </NavLink>
+    )
+  }
 }

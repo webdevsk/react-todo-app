@@ -1,19 +1,26 @@
-import ScrollToTop from 'react-scroll-to-top';
-import FloatingInput from './components/FloatingInput';
-import Heading from './components/Heading';
-import TaskList from "./components/TaskList";
-import SideMenu from './components/SideMenu';
+import ScrollToTop from 'react-scroll-to-top'
+import Heading from '../components/Heading'
+import TaskComponent from "./TaskComponent"
+import SideMenu from '../components/SideMenu'
+import { Outlet } from 'react-router-dom';
+import { getCategories } from '../operations';
 
-function App() {
+
+export async function loader(){
+  const {categories} = await getCategories()
+  return {categories}
+}
+
+
+function Root() {
   return (
     <>
     {/* Core components */}
     <SideMenu />
 
-    <Heading className="max-w-2xl mx-auto px-8 mb-4 mt-24"/>
-
-    <TaskList className="max-w-2xl mx-auto px-8" />
-
+    <div id="taskContainer">
+      <Outlet />
+    </div>
     {/* Some UI elements */}
     <div className="fixed top-0 left-0 w-full h-2 bg-amber-500"></div>
 
@@ -27,4 +34,4 @@ function App() {
   )
 }
 
-export default App
+export default Root
