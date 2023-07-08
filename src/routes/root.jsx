@@ -2,7 +2,7 @@ import ScrollToTop from 'react-scroll-to-top'
 import SideMenu from '../components/SideMenu'
 import { Outlet } from 'react-router-dom';
 import { getCategories } from '../operations';
-import { useEffect } from 'react';
+import { useState, createContext, useEffect } from 'react';
 
 
 export async function loader(){
@@ -10,28 +10,42 @@ export async function loader(){
   return {categories}
 }
 
+export const ThemeContext = createContext()
 
 export default function Root() {
+  const [theme, setTheme] = useState(()=>(
+    'theme' in localStorage ? localStorage.theme : 'auto'
+  ))
+  
+  console.log(theme)
+
   useEffect(() => {
+    switch (theme){
+      case 'auto':
+          localStorage.removeItem('theme')
+          break
+      case 'light':
+          localStorage.theme = 'light'
+          break
+      case 'dark':
+          localStorage.theme = 'dark'
+          break
+      }
+
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
     
-    // // Whenever the user explicitly chooses light mode
-    // localStorage.theme = 'light'
-    
-    // // Whenever the user explicitly chooses dark mode
-    // localStorage.theme = 'dark'
-    
-    // // Whenever the user explicitly chooses to respect the OS preference
-    // localStorage.removeItem('theme')
-  }, [])
+  }, [theme])
+
   return (
     <>
     {/* Core components */}
-    <SideMenu />
+    <ThemeContext.Provider value={{theme, setTheme}}>
+      <SideMenu />
+    </ThemeContext.Provider>
 
     <div id="taskContainer">
       <Outlet />

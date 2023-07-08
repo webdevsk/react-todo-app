@@ -24,7 +24,7 @@ function FloatingInput({className, tasks}) {
                 placeholder="Get started!" 
                 containerProps={{className: "h-12"}}
                 labelProps={{className: "hidden"}}
-                className={`pr-20 focus:border-t-amber-500 !border-amber-500 !text-base ring-4 ring-amber-500 !border  bg-transparent shadow-xl dark:!text-white shadow-blue-gray-900/30 placeholder:text-base placeholder:text-blue-gray-200 !text-black`} 
+                className={`pr-20 focus:border-t-amber-500 !border-amber-500 !text-base ring-4 ring-amber-500 !border  bg-white dark:bg-gray-900 shadow-xl dark:!text-white shadow-blue-gray-900/30 placeholder:text-base placeholder:text-blue-gray-200 !text-black transition-colors duration-300`} 
                 maxLength={50}/>
 
                 <Tooltip content="Add new task"

@@ -4,13 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { Link, NavLink, useLoaderData, useParams } from 'react-router-dom';
 import CategoryMaker from './CategoryMaker';
+import ThemeChanger from './ThemeChanger';
 
 export default function SideMenu() {
 
   const {categories} = useLoaderData()
   const {category} = useParams()
   console.log(categories)
-  const devMode = false
+  const devMode = true //keeps the sidebar open
   const [open, setOpen] = useState(()=>{
     if (!devMode && window.innerWidth <= 1400) return false
 
@@ -47,18 +48,27 @@ export default function SideMenu() {
     }} 
     className={`z-40`} >
 
-      <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap bg-white dark:bg-gray-800 rounded-none`}>
-        <CardBody className={`flex-1 px-0`}>
+      <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap bg-white dark:bg-gray-800 rounded-none transition-colors duration-300`}>
+        <CardBody className={`flex-1 px-0 flex flex-col gap-12 mt-20`}>
+
+          {/* Site title */}
           <Link to="/">
-            <Typography variant='h4' className={`mt-20 mb-8 px-6 dark:text-gray-100`}>TODO App</Typography> 
+            <Typography variant='h4' className={`px-4 dark:text-gray-100 transition-colors duration-300`}>TODO App</Typography> 
           </Link>
 
+          {/* ThemeChanger */}
+          <ThemeChanger />
+
+
+
+          {/* Category menu starts here */}
           <List className='px-4 capitalize '>
+          <Typography className='mb-2 text-gray-700 dark:text-gray-300 transition-colors duration-300' variant='h6'>Category</Typography>
             {categories.map(category => {
               return(
                 <NavLink key={category} to={`/${category}`} className='group'>
 
-                  <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors`}>
+                  <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
                     {category}
                   </ListItem>
 
@@ -67,7 +77,7 @@ export default function SideMenu() {
             })}
             {/* Additions to the categories list */}
             <PlaceholderCategory categories = {categories} category = {category} 
-            className='dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors'/>
+            className='dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300'/>
             <CategoryMaker />
 
           </List>

@@ -1,10 +1,12 @@
 import { nanoid } from "nanoid";
 
 async function getParsedLocalData(label){
-    const rawData = await localStorage.getItem(label)
-    if (rawData === null || rawData === '[]') return []
-    return JSON.parse(rawData)
+    const parsedData = label in localStorage
+    ? JSON.parse(localStorage.getItem(label))
+    : []
+    return parsedData
 }
+
 
 export async function createTask({label, category}) {
     const storedData = await getParsedLocalData('TODOS')
@@ -95,10 +97,11 @@ export async function markAllDone(category){
     const storedData = await getParsedLocalData('TODOS')
     const newData = storedData.length === 0
     ? []
-    : storedData.map(task => {
-        if (task.category !== category) return task
-        return {...task, completed: true}
-    })
+    : storedData.map(task => (
+        task.category !== category 
+        ? task 
+        : {...task, completed: true}
+    ))
 
     localStorage.setItem('TODOS', JSON.stringify(newData))
 

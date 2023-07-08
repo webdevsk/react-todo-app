@@ -63,7 +63,7 @@ export default function TaskComponent() {
               <Typography variant="h6" className={`text-red-500 mx-4`}>Delete all completed</Typography>
             </button>
           </MenuHandler>
-          <MenuList className='dark:bg-gray-900 dark:border-gray-800'>
+          <MenuList className='dark:bg-gray-900 dark:border-gray-800 transition-colors duration-300'>
             <fetcher.Form method="post" action="destroycompleted">
               <MenuItem type='submit' className='!text-red-500 font-bold hover:!text-white !bg-transparent hover:!bg-red-500 text-center'>
                 Confirm
@@ -77,7 +77,7 @@ export default function TaskComponent() {
 
       </div>
 
-      <List className="gap-y-4 p-0 text-black dark:text-white">
+      <List className="gap-y-4 p-0 text-black dark:text-white transition-colors duration-300">
         {tasks.length == 0 && <p className={`text-base`}>No tasks yet. Type one below to get started!</p>}
         {tasks.map(task => {
           return (
