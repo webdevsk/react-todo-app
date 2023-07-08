@@ -18,7 +18,7 @@ export default function CategoryMaker(){
 
     return(
         <>
-        <ListItem className="bg-gray-200 py-0 px-0">
+        <ListItem className="bg-gray-200 dark:bg-white dark:text-gray-900 py-0 px-0">
             <input
             className="bg-transparent placeholder:text-inherit focus:border-none focus:outline-none focus:placeholder:opacity-0 py-3 px-3 box-border w-full cursor-pointer focus:cursor-auto flex-1"
             placeholder="Add New Category"

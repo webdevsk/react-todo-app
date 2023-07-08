@@ -1,9 +1,8 @@
 import ScrollToTop from 'react-scroll-to-top'
-import Heading from '../components/Heading'
-import TaskComponent from "./TaskComponent"
 import SideMenu from '../components/SideMenu'
 import { Outlet } from 'react-router-dom';
 import { getCategories } from '../operations';
+import { useEffect } from 'react';
 
 
 export async function loader(){
@@ -12,7 +11,23 @@ export async function loader(){
 }
 
 
-function Root() {
+export default function Root() {
+  useEffect(() => {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    
+    // // Whenever the user explicitly chooses light mode
+    // localStorage.theme = 'light'
+    
+    // // Whenever the user explicitly chooses dark mode
+    // localStorage.theme = 'dark'
+    
+    // // Whenever the user explicitly chooses to respect the OS preference
+    // localStorage.removeItem('theme')
+  }, [])
   return (
     <>
     {/* Core components */}
@@ -33,5 +48,3 @@ function Root() {
     </>
   )
 }
-
-export default Root

@@ -14,6 +14,7 @@ export default function DeleteMarker({id, className}) {
       relative
       before:content-['']
       before:bg-blue-gray-500
+      dark:before:bg-white
       before:w-12
       before:h-12
       before:absolute

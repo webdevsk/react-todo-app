@@ -26,7 +26,7 @@ export default function CompletedMarker({id, completed, className, color}) {
       checked={completed}
       id={elmid} 
       containerProps={{htmlFor: elmid, className: 'p-4'}} 
-      className={`rounded-full ${className}`} 
+      className={`rounded-full ${completed ? 'dark:hover:before:bg-amber-500' : 'dark:hover:before:bg-white '} ${className}`} 
       color={color} />
     </fetcher.Form>
   )

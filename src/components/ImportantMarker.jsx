@@ -21,7 +21,7 @@ function ImportantMarker({id, important, inputClasses, shadowClasses, iconClasse
 
   const shadowColors = important 
   ? 'group-hover/important:bg-amber-500' 
-  : 'group-hover/important:bg-blue-gray-500'
+  : 'group-hover/important:bg-blue-gray-500 dark:group-hover/important:bg-white'
 
   const svgColors = important && 'fill-amber-500'
 

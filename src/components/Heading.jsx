@@ -5,9 +5,9 @@ function Heading({className, category}) {
   return (
         <section className={`${className}`}>
       <div className="container">
-        <Typography variant="h3" className='font-calistoga capitalize text-gray-800 tracking-wider'>{category === 'home' ? 'My Day' : category}</Typography>
+        <Typography variant="h3" className='font-calistoga capitalize text-gray-800 dark:text-gray-300 tracking-wider'>{category === 'home' ? 'My Day' : category}</Typography>
         <p
-        className="text-sm text-gray-700 font-semibold tracking-wide font-serif"
+        className="text-sm text-gray-700 dark:text-gray-400 font-semibold tracking-wide font-serif"
         >{today.toLocaleDateString('en-US', {day:"2-digit", weekday:"long", month:"long"})}</p>
       </div>
     </section>

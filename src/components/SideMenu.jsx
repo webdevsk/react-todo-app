@@ -45,20 +45,20 @@ export default function SideMenu() {
         && e.pointerType === 'touch') return true
       }) 
     }} 
-    className={`z-40 shadow-sm bg-white`} >
+    className={`z-40`} >
 
-      <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap`}>
+      <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap bg-white dark:bg-gray-800 rounded-none`}>
         <CardBody className={`flex-1 px-0`}>
           <Link to="/">
-            <Typography variant='h4' className={`mt-20 mb-8 px-6`}>TODO App</Typography> 
+            <Typography variant='h4' className={`mt-20 mb-8 px-6 dark:text-gray-100`}>TODO App</Typography> 
           </Link>
 
-          <List className='px-4 capitalize'>
+          <List className='px-4 capitalize '>
             {categories.map(category => {
               return(
                 <NavLink key={category} to={`/${category}`} className='group'>
 
-                  <ListItem className={`group-[.active]:bg-gray-300`}>
+                  <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors`}>
                     {category}
                   </ListItem>
 
@@ -66,7 +66,8 @@ export default function SideMenu() {
               )
             })}
             {/* Additions to the categories list */}
-            <PlaceholderCategory categories = {categories} category = {category} />
+            <PlaceholderCategory categories = {categories} category = {category} 
+            className='dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors'/>
             <CategoryMaker />
 
           </List>
@@ -74,11 +75,11 @@ export default function SideMenu() {
 
         <CardFooter>
           
-          <Card shadow={false} variant='filled' color='white'>
+          <Card shadow={false} variant='filled' className='bg-transparent text-gray-900 dark:text-gray-50'>
             <CardBody className={`flex flex-col gap-0 p-0`}>
               <hr className='h-0.5 mb-4 rounded bg-gray-900/40'/>
-              <Typography color='gray' variant='h6'>Mohammed Salman Khan</Typography>
-              <Typography color='gray' className={`text-sm font-medium`}>Jr. Frontend Web Developer</Typography>
+              <Typography variant='h6'>Mohammed Salman Khan</Typography>
+              <Typography className={`text-sm font-medium`}>Jr. Frontend Web Developer</Typography>
               <div className="flex gap-4 mt-2 flex-wrap">
 
                 <a href="https://github.com/webdevsk" target='_blank' rel='noreferrer'>
@@ -128,13 +129,13 @@ function BurgerMenuBtn({id, className, open, toggleDrawer}){
   )
 }
 
-function PlaceholderCategory({categories, category}){
-  if (categories.includes(category) || category === 'home'){
+function PlaceholderCategory({categories, category, className}){
+  if (categories.includes(category)){
     return null
   } else {
     return(
       <NavLink to={`/${category}`} className={`group`}>
-        <ListItem className={`group-[.active]:bg-gray-300`}>
+        <ListItem className={className}>
           {category}
         </ListItem>
       </NavLink>

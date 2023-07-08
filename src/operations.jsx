@@ -38,8 +38,8 @@ export async function getCategories(){
     let categories
     //Unique keys
     storedData.length === 0
-    ? categories = ['home']
-    : categories = ['home', ...new Map(storedData.map(task => [task.category, task])).keys()]
+    ? categories = []
+    : categories = [...new Map(storedData.map(task => [task.category, task])).keys()]
     return { categories }
 }
 
