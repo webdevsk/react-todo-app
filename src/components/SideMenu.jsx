@@ -7,25 +7,36 @@ import CategoryMaker from './CategoryMaker';
 import ThemeChanger from './ThemeChanger';
 
 export default function SideMenu() {
-
+  const devMode = false //keeps the sidebar open
+  const [open, setOpen] = useState(() => (
+    !devMode && window.innerWidth <= 1400
+    ? false
+    : 'drawerOpen' in localStorage
+    ? true
+    : false
+  ))
+    
+  const [overlay, setOverlay] = useState(() => window.innerWidth <= 1400)
+  console.log(overlay)
   const {categories} = useLoaderData()
   const {category} = useParams()
-  console.log(categories)
-  const devMode = true //keeps the sidebar open
-  const [open, setOpen] = useState(()=>{
-    if (!devMode && window.innerWidth <= 1400) return false
-
-    const storedVal = localStorage.getItem('drawerOpen')
-    if (storedVal == null || storedVal == '') return true
-    return JSON.parse(localStorage.getItem('drawerOpen'))
-  })
-  const openDrawer = () => setOpen(true)
+  // const openDrawer = () => setOpen(true)
   const closeDrawer = () => setOpen(false)
   const toggleDrawer = () => setOpen(!open)
-  useEffect(()=> localStorage.setItem('drawerOpen', JSON.stringify(open)), [open])
+  useEffect(()=> (
+  open 
+  ? localStorage.setItem('drawerOpen', '1') 
+  : localStorage.removeItem('drawerOpen')
+  ), [open])
+  // useEffect(()=> localStorage.setItem('drawerOpen', JSON.stringify(open)), [open])
   useEffect (()=>{
     function handleWindowResize(){
-      if (!devMode && window.innerWidth <= 1400) return setOpen(false)
+      if (!devMode && window.innerWidth <= 1400){
+        setOpen(false)
+        setOverlay(true)
+      } else {
+        setOverlay(false)
+      }
     }
 
     window.addEventListener('resize', handleWindowResize)
@@ -37,15 +48,16 @@ export default function SideMenu() {
   return (
     <>
     <BurgerMenuBtn id="burgerMenuBtn" className={`fixed left-4 top-6 z-50`} open={open} toggleDrawer={toggleDrawer} />
-    <Drawer open={open} onClose={closeDrawer} overlay={false} 
+    <Drawer open={open} onClose={closeDrawer} overlay={overlay} 
     dismiss={{ 
       escapeKey: true, 
-      outsidePress: ((e)=>{
-        if(!e.target.closest('#burgerMenuBtn') 
-        && window.innerWidth <= 1400
-        && e.pointerType === 'touch') return true
-      }) 
+      outsidePress: ((e)=>(
+        !e.target.closest('#burgerMenuBtn') && window.innerWidth <= 1400
+        ? true
+        : false
+      )),
     }} 
+    overlayProps={{className:'z-30'}}
     className={`z-40`} >
 
       <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap bg-white dark:bg-gray-800 rounded-none transition-colors duration-300`}>
