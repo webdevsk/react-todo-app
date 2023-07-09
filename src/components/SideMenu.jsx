@@ -1,4 +1,4 @@
-import { Drawer, List, Typography, ListItem, ListItemPrefix, ListItemSuffix, Card, CardHeader, CardFooter, CardBody, Tooltip, IconButton } from '@material-tailwind/react'
+import { Drawer, List, Typography, ListItem, ListItemPrefix, ListItemSuffix, Card, CardHeader, CardFooter, CardBody, Tooltip, IconButton, speedDial } from '@material-tailwind/react'
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons'
@@ -76,7 +76,18 @@ export default function SideMenu() {
           {/* Category menu starts here */}
           <List className='px-4 capitalize '>
           <Typography className='mb-2 text-gray-700 dark:text-gray-300 transition-colors duration-300' variant='h6'>Category</Typography>
+
+            <NavLink key='home' to={`/home`} className='group'>
+
+              <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
+                home
+              </ListItem>
+
+            </NavLink>
+            
             {categories.map(category => {
+              if (category === 'home') return null
+
               return(
                 <NavLink key={category} to={`/${category}`} className='group'>
 
@@ -88,8 +99,17 @@ export default function SideMenu() {
               )
             })}
             {/* Additions to the categories list */}
-            <PlaceholderCategory categories = {categories} category = {category} 
-            className='dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300'/>
+            
+            {(!categories.includes(category) && category !== 'home') && (
+              <NavLink key={category} to={`/${category}`} className='group'>
+
+                <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
+                  {category}
+                </ListItem>
+
+              </NavLink>
+            )}
+
             <CategoryMaker />
 
           </List>
@@ -151,16 +171,17 @@ function BurgerMenuBtn({id, className, open, toggleDrawer}){
   )
 }
 
-function PlaceholderCategory({categories, category, className}){
-  if (categories.includes(category)){
-    return null
-  } else {
-    return(
-      <NavLink to={`/${category}`} className={`group`}>
-        <ListItem className={className}>
-          {category}
-        </ListItem>
-      </NavLink>
-    )
-  }
+function PlaceholderCategory({categories, category}){
+  if ( categories.includes(category) || category === 'home') return null
+  return(
+    <>
+    <NavLink key={category} to={`/${category}`} className='group'>
+
+      <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
+        {category}
+      </ListItem>
+
+    </NavLink>
+    </>
+  )
 }
