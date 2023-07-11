@@ -13,11 +13,6 @@ export async function loader(){
 export const ThemeContext = createContext()
 
 export default function Root() {
-  const themes = [
-    {label: 'Auto', value: 'auto'},
-    {label: 'Light', value: 'light'},
-    {label: 'Dark', value: 'dark'},
-  ]
 
   const [theme, setTheme] = useState(()=>(
     'theme' in localStorage ? localStorage.theme : 'auto'
@@ -47,7 +42,7 @@ export default function Root() {
   return (
     <>
     {/* Core components */}
-    <ThemeContext.Provider value={{theme, themes, setTheme}}>
+    <ThemeContext.Provider value={{theme, setTheme}}>
       <SideMenu />
     </ThemeContext.Provider>
 

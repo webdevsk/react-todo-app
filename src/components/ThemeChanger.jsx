@@ -1,9 +1,9 @@
-import { Tab, Tabs, TabsHeader, Typography } from "@material-tailwind/react";
+import { Tab, Tabs, TabsHeader, Tooltip, Typography } from "@material-tailwind/react";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../routes/root"
 
 function ThemeChanger() {
-    const {theme, themes, setTheme} = useContext(ThemeContext)
+    const {theme, setTheme} = useContext(ThemeContext)
     console.log('I ran')
   return (
     <div className='px-4'>
@@ -11,13 +11,23 @@ function ThemeChanger() {
         <Tabs value={theme}
         className=''>
             <TabsHeader>
-                {themes.map(item => (
-
-                    <Tab key={item.value} value={item.value} title={item.value} onClick={() => setTheme(item.value)}>
-                        {item.label}
+                <Tooltip content={`Follow OS (Limited support)`} animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+                }}>
+                    <Tab key='auto' value='auto' title='auto' onClick={() => setTheme('auto')}>
+                        Auto
                     </Tab>
+                </Tooltip>
 
-                ))}
+                <Tab key='light' value='light' title='light' onClick={() => setTheme('light')}>
+                    Light
+                </Tab>
+
+                <Tab key='dark' value='dark' title='dark' onClick={() => setTheme('dark')}>
+                    Dark
+                </Tab>
+
             </TabsHeader>
         </Tabs>
     </div>

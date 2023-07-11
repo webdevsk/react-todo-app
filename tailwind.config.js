@@ -4,8 +4,8 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 const extendedAnimations = {
   ripple : 'ripple .3s linear',
-  toLeft  : 'toLeft .3s ease-in-out',
-  toUp   : 'toUp .3s ease-in-out'
+  toLeft : 'toLeft .3s ease-in-out',
+  toUp   : 'toUp .3s ease-in-out',
 }
 
 const extendedKeyframes = {
@@ -23,7 +23,7 @@ const extendedKeyframes = {
 
 const extendedFontFamily = {
   'calistoga': ['Calistoga', ...defaultTheme.fontFamily.serif],
-  'sans'     : ['Poppins', ...defaultTheme.fontFamily.sans]
+  'sans'     : ['Poppins', ...defaultTheme.fontFamily.sans],
 }
 
 export default withMT({
@@ -34,9 +34,9 @@ export default withMT({
   ],
   theme: {
     extend: {
-      animation: extendedAnimations,
-      keyframes: extendedKeyframes,
-      fontFamily: extendedFontFamily
+      animation:  extendedAnimations,
+      keyframes:  extendedKeyframes,
+      fontFamily: extendedFontFamily,
     },
   },
   plugins: [],
