@@ -3,13 +3,13 @@ import withMT from "@material-tailwind/react/utils/withMT"
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 const extendedAnimations = {
-  ripple : 'ripple .7s linear',
+  ripple : 'ripple .3s linear',
   toLeft  : 'toLeft .3s ease-in-out',
   toUp   : 'toUp .3s ease-in-out'
 }
 
 const extendedKeyframes = {
-  ripple: { '100%': {width: '2000px', height: '2000px'} },
+  ripple: { '100%': {transform: 'translateX(100%)'} },
   toUp  : { 
             '0%'  : {transform: 'translateY(10px)', opacity: '0'},
             '50%' : {opacity: 1},

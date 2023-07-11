@@ -33,7 +33,7 @@ function FloatingInput({className, tasks}) {
                 unmount: { scale: 0, y: 25 },
                 }}
                 >
-                    <IconButton size="sm" type="submit" color="amber" ripple={true} variant="text"
+                    <IconButton size="sm" type="submit" title='Submit new task' color="amber" ripple={true} variant="text"
                     className={`!absolute !py-6 !px-8 rounded-none rounded-tr-lg rounded-br-lg right-0 top-2/4 -translate-y-2/4 shadow-none hover:shadow-none text-2xl`}>
                         <FontAwesomeIcon icon={faPlus} size="sm" />
                     </IconButton>

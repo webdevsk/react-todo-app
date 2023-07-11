@@ -6,7 +6,6 @@ export default function CategoryMaker(){
     const [link, setLink] = useState('')
     const navigate = useNavigate()
 
-    console.log(link)
     const resetLink = () => setLink('')
     const handlePress = (e) => {
         if (e.isComposing || e.keyCode === 229) return
@@ -20,7 +19,7 @@ export default function CategoryMaker(){
         <>
         <ListItem className="bg-gray-200 dark:bg-gray-300 dark:text-gray-900 py-0 px-0  transition-colors duration-300">
             <input
-            className="bg-transparent placeholder:text-inherit focus:border-none focus:outline-none focus:placeholder:opacity-0 py-3 px-3 box-border w-full cursor-pointer focus:cursor-auto flex-1"
+            className="bg-transparent placeholder:text-inherit focus:border-none focus:outline-none focus:placeholder:opacity-0 py-2 px-3 box-border w-full cursor-pointer focus:cursor-auto flex-1"
             placeholder="Add New Category"
             spellCheck='false'
             value={link}
@@ -32,8 +31,8 @@ export default function CategoryMaker(){
 
             <ListItemSuffix className={`${link === '' ? 'hidden' : ''}`}>
                 <Tooltip content='Reset'>
-                    <button aria-label='Reset' onClick={resetLink}
-                    className={`p-3 text-red-500 border-s border-gray-300 hover:bg-red-50 transition-colors`}
+                    <button title='Cancel' aria-label='Reset' onClick={resetLink}
+                    className={`px-3 py-2 text-red-500 border-s border-gray-300 hover:bg-red-50 transition-colors`}
                     >
                         x
                     </button>
@@ -44,7 +43,7 @@ export default function CategoryMaker(){
                 <Tooltip content='Go!'>
                     <Link to={link} aria-label="Go!"
                     onClick={()=>setLink('')}
-                    className={`block text-green-500 hover:bg-green-50 transition-colors p-3 rounded-tr-lg rounded-br-lg border-x border-gray-300`}>
+                    className={`block text-green-500 hover:bg-green-50 transition-colors px-3 py-2 rounded-tr-lg rounded-br-lg border-x border-gray-300`}>
                         +
                     </Link>
                 </Tooltip>

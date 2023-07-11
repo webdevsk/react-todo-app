@@ -11,3 +11,7 @@
 form:focus-visible{
     @apply outline-none;
 }
+
+#completion-bar{
+    @apply absolute -left-full top-0 bg-gray-200 dark:bg-gray-900 transition-colors duration-300 w-full h-full origin-bottom -z-10 [animation-fill-mode:forwards];
+}

@@ -9,15 +9,14 @@ import ThemeChanger from './ThemeChanger';
 export default function SideMenu() {
   const devMode = false //keeps the sidebar open
   const [open, setOpen] = useState(() => (
-    !devMode && window.innerWidth <= 1400
+    !devMode && window.outerWidth <= 1400
     ? false
     : 'drawerOpen' in localStorage
     ? true
     : false
   ))
     
-  const [overlay, setOverlay] = useState(() => window.innerWidth <= 1400)
-  console.log(overlay)
+  const [overlay, setOverlay] = useState(() => window.outerWidth <= 1400)
   const {categories} = useLoaderData()
   const {category} = useParams()
   // const openDrawer = () => setOpen(true)
@@ -30,8 +29,10 @@ export default function SideMenu() {
   ), [open])
   // useEffect(()=> localStorage.setItem('drawerOpen', JSON.stringify(open)), [open])
   useEffect (()=>{
-    function handleWindowResize(){
-      if (!devMode && window.innerWidth <= 1400){
+    function handleWindowResize(e){
+      console.log(e)
+      console.log(window.outerWidth, window.innerWidth)
+      if (!devMode && window.outerWidth <= 1400){
         setOpen(false)
         setOverlay(true)
       } else {
@@ -52,7 +53,7 @@ export default function SideMenu() {
     dismiss={{ 
       escapeKey: true, 
       outsidePress: ((e)=>(
-        !e.target.closest('#burgerMenuBtn') && window.innerWidth <= 1400
+        !e.target.closest('#burgerMenuBtn') && window.outerWidth <= 1400
         ? true
         : false
       )),
@@ -61,7 +62,7 @@ export default function SideMenu() {
     className={`z-40`} >
 
       <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap bg-white dark:bg-gray-800 rounded-none transition-colors duration-300`}>
-        <CardBody className={`flex-1 px-0 flex flex-col gap-12 mt-20`}>
+        <CardBody className={`flex-1 px-0 flex flex-col gap-6 mt-20`}>
 
           {/* Site title */}
           <Link to="/">
@@ -76,10 +77,10 @@ export default function SideMenu() {
           {/* Category menu starts here */}
           <List className='px-4 capitalize '>
           <Typography className='mb-2 text-gray-700 dark:text-gray-300 transition-colors duration-300' variant='h6'>Category</Typography>
-
+            {/* Persistent home category */}
             <NavLink key='home' to={`/home`} className='group'>
 
-              <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
+              <ListItem className={`py-2 dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
                 home
               </ListItem>
 
@@ -91,19 +92,19 @@ export default function SideMenu() {
               return(
                 <NavLink key={category} to={`/${category}`} className='group'>
 
-                  <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
+                  <ListItem className={`py-2 dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
                     {category}
                   </ListItem>
 
                 </NavLink>
               )
             })}
-            {/* Additions to the categories list */}
-            
+
+            {/* Placeholder category for when user is in a brand new category link */}
             {(!categories.includes(category) && category !== 'home') && (
               <NavLink key={category} to={`/${category}`} className='group'>
 
-                <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
+                <ListItem className={`py-2 dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
                   {category}
                 </ListItem>
 
@@ -124,9 +125,9 @@ export default function SideMenu() {
               <Typography className={`text-sm font-medium`}>Jr. Frontend Web Developer</Typography>
               <div className="flex gap-4 mt-2 flex-wrap">
 
-                <a href="https://github.com/webdevsk" target='_blank' rel='noreferrer'>
+                <a href="https://github.com/webdevsk/react-todo-app" target='_blank' rel='noreferrer'>
                   <Tooltip content="GitHub" animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
-                    <IconButton className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
+                    <IconButton title='Developer Github' className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
                       <FontAwesomeIcon className={`w-7 h-7 mt-[2px] text-gray-900`} icon={faGithubSquare} />
                     </IconButton>
                   </Tooltip>
@@ -134,7 +135,7 @@ export default function SideMenu() {
 
                 <a href="https://www.linkedin.com/in/webdevsk/" target='_blank' rel='noreferrer'>
                   <Tooltip content="Linkedin" animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
-                    <IconButton className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
+                    <IconButton title='Developer Linkedin' className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
                       <FontAwesomeIcon className={`w-7 h-7 mt-[2px] text-gray-900`} icon={faLinkedin} />
                     </IconButton>
                   </Tooltip>
@@ -158,7 +159,7 @@ export default function SideMenu() {
 function BurgerMenuBtn({id, className, open, toggleDrawer}){
   return(
     <div className={className}>
-      <button onClick={toggleDrawer} className={`relative group`}>
+      <button onClick={toggleDrawer} title='Toggles drawer menu' className={`relative group`}>
         <div id={id} className={`relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-gray-300 ring-gray-300 hover:ring-8 ${open ? 'ring-4' : 'ring-0'} ring-opacity-30 duration-200 shadow-md`}>
           <div className={`flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden ${open && '-translate-x-1.5 rotate-180'}`}>
             <div className={`bg-black h-[2px] transform transition-all duration-300 origin-left ${open ? 'rotate-[42deg] w-2/3 delay-150' : 'w-7'}`}></div>
@@ -168,20 +169,5 @@ function BurgerMenuBtn({id, className, open, toggleDrawer}){
         </div>
       </button>
     </div>
-  )
-}
-
-function PlaceholderCategory({categories, category}){
-  if ( categories.includes(category) || category === 'home') return null
-  return(
-    <>
-    <NavLink key={category} to={`/${category}`} className='group'>
-
-      <ListItem className={`dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
-        {category}
-      </ListItem>
-
-    </NavLink>
-    </>
   )
 }
