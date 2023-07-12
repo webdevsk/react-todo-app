@@ -29,9 +29,13 @@ export default function SideMenu() {
   ), [open])
   // useEffect(()=> localStorage.setItem('drawerOpen', JSON.stringify(open)), [open])
   useEffect (()=>{
-    function handleWindowResize(e){
-      console.log(e)
-      console.log(window.outerWidth, window.innerWidth)
+    let currentWindowWidth = window.outerWidth
+
+    function handleWindowResize(){
+      //Run only when the horizontal width changes to avoid firing on keyboard popup on touch devices
+      if (window.outerWidth === currentWindowWidth) return
+      currentWindowWidth = window.outerWidth
+
       if (!devMode && window.outerWidth <= 1400){
         setOpen(false)
         setOverlay(true)
@@ -49,7 +53,7 @@ export default function SideMenu() {
   return (
     <>
     <BurgerMenuBtn id="burgerMenuBtn" className={`fixed left-4 top-6 z-50`} open={open} toggleDrawer={toggleDrawer} />
-    <Drawer open={open} onClose={closeDrawer} overlay={overlay} 
+    <Drawer open={open} onClose={closeDrawer} overlay={overlay}
     dismiss={{ 
       escapeKey: true, 
       outsidePress: ((e)=>(
@@ -58,7 +62,7 @@ export default function SideMenu() {
         : false
       )),
     }} 
-    overlayProps={{className:'z-30'}}
+    overlayProps={{className:'z-30 fixed'}}
     className={`z-40`} >
 
       <Card shadow={false} className={`h-[100svh] overflow-auto flex-nowrap bg-white dark:bg-gray-800 rounded-none transition-colors duration-300`}>
