@@ -79,7 +79,7 @@ export default function SideMenu() {
 
 
           {/* Category menu starts here */}
-          <List className='px-4 capitalize '>
+          <List className='px-4'>
           <Typography className='mb-2 text-gray-700 dark:text-gray-300 transition-colors duration-300' variant='h6'>Category</Typography>
             {/* Persistent home category */}
             <NavLink key='home' to={`/home`} className='group'>
