@@ -4,7 +4,6 @@ import { ThemeContext } from "../routes/root"
 
 function ThemeChanger() {
     const {theme, setTheme} = useContext(ThemeContext)
-    console.log('I ran')
   return (
     <div className='px-4'>
         <Typography className='mb-2 text-gray-700 dark:text-gray-300  transition-colors duration-300' variant='h6'>Theme</Typography>
