@@ -43,7 +43,7 @@
     <br />
     <a href="https://github.com/webdevsk/react-todo-app"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://celadon-cactus-42acbb.netlify.app/">View Demo</a>
+    <a href="https://celadon-cactus-42acbb.netlify.app/" target="_blank">View Demo</a>
     ·
     <a href="https://github.com/webdevsk/react-todo-app/issues">Report Bug</a>
     ·
@@ -85,7 +85,7 @@
 ## About The Project
 <div align="center">
 <a href="https://celadon-cactus-42acbb.netlify.app/">
-<img src="github_assets/snapshot.png" alt="Product snapshot" width="800">
+<img src="github_assets/snapshot.png" target="_blank" alt="Product snapshot">
 </a>
 </div>
 <br/>
@@ -125,7 +125,10 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-🌐 The site is already live at: site_url
+🌐 The site is already live at: 
+<a href="https://celadon-cactus-42acbb.netlify.app/" target="_blank">
+https://celadon-cactus-42acbb.netlify.app/
+</a>
 
 _OR_
 
