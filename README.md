@@ -162,13 +162,85 @@ _OR_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
 ## Features
 
-Work in Progress...
+<details>
+  <summary><h3>⭐ Dynamic Drawer Menu</h3></summary>
 
+  <table>
+    <tr valign="bottom">
+      <td>
+        <img src="github_assets/snapshot.png" alt="Menu desktop view">
+        <p align="center"><small>Desktop</small></p>
+      </td>
+      <td>
+        <img src="github_assets/mobile-snapshot.png" alt="Menu mobile view">
+        <p align="center"><small>Mobile</small></p>
+      </td>
+    </tr>
+  </table>
+
+   * Larger screens
+     * Side Drawer Menu can stay either Shown or Hidden based on user's preference.
+     * The shown/hidden state is persisted between browsing sessions.
+     * Clicking outside the menu will not close it.
+
+   * Smaller screens (1400px or less)
+     * Side Drawer Menu will always be Hidden unless user opens it.
+     * Window size is consistently being monitored to check if the window goes below 1400px. If so the menu will hide automatically.
+     * Clicking outside the menu will close it.
+<details>
+<summary>
+<strong>⚒️ Here's a snippet of code on how I solved it:</strong>
+</summary>
+
+  ```jsx
+  //Initial state. Defaults to false on smaller screens
+  const [open, setOpen] = useState(() => (
+    window.outerWidth <= 1400
+    ? false
+    : 'drawerOpen' in localStorage
+    ? true
+    : false
+  ))
+
+  //Saves state in localStorage
+  useEffect(()=> (
+    open 
+    ? localStorage.setItem('drawerOpen', '1') 
+    : localStorage.removeItem('drawerOpen')
+  ), [open])
+
+  //Enables overlay on smaller screens. Which blurs outside content and listens to touch events
+  const [overlay, setOverlay] = useState(() => window.outerWidth <= 1400)
+
+  //Runs on window resize
+  useEffect (()=>{
+    let currentWindowWidth = window.outerWidth
+
+    function handleWindowResize(){
+      //Run only when the horizontal width changes to avoid firing on keyboard popup on touch devices
+      if (window.outerWidth === currentWindowWidth) return
+      currentWindowWidth = window.outerWidth
+
+      if (window.outerWidth <= 1400){
+        setOpen(false)
+        setOverlay(true)
+      } else {
+        setOverlay(false)
+      }
+    }
+    
+    window.addEventListener('resize', handleWindowResize)
+    return () => {
+      window.removeEventListener('resize', handleWindowResize)
+    }
+  }, [])
+  ```
+</details>
+Work in progress...
+</details>
 <!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
