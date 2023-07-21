@@ -7,9 +7,8 @@ import CategoryMaker from './CategoryMaker';
 import ThemeChanger from './ThemeChanger';
 
 export default function SideMenu() {
-  const devMode = false //keeps the sidebar open
   const [open, setOpen] = useState(() => (
-    !devMode && window.outerWidth <= 1400
+    window.outerWidth <= 1400
     ? false
     : 'drawerOpen' in localStorage
     ? true
@@ -19,15 +18,16 @@ export default function SideMenu() {
   const [overlay, setOverlay] = useState(() => window.outerWidth <= 1400)
   const {categories} = useLoaderData()
   const {category} = useParams()
-  // const openDrawer = () => setOpen(true)
+  
   const closeDrawer = () => setOpen(false)
   const toggleDrawer = () => setOpen(!open)
+
   useEffect(()=> (
   open 
   ? localStorage.setItem('drawerOpen', '1') 
   : localStorage.removeItem('drawerOpen')
   ), [open])
-  // useEffect(()=> localStorage.setItem('drawerOpen', JSON.stringify(open)), [open])
+  
   useEffect (()=>{
     let currentWindowWidth = window.outerWidth
 
@@ -36,7 +36,7 @@ export default function SideMenu() {
       if (window.outerWidth === currentWindowWidth) return
       currentWindowWidth = window.outerWidth
 
-      if (!devMode && window.outerWidth <= 1400){
+      if (window.outerWidth <= 1400){
         setOpen(false)
         setOverlay(true)
       } else {
@@ -81,17 +81,17 @@ export default function SideMenu() {
           {/* Category menu starts here */}
           <List className='px-4'>
           <Typography className='mb-2 text-gray-700 dark:text-gray-300 transition-colors duration-300' variant='h6'>Category</Typography>
-            {/* Persistent home category */}
-            <NavLink key='home' to={`/home`} className='group'>
+            {/* Persistent Home category */}
+            <NavLink key='Home' to={`/Home`} className='group'>
 
               <ListItem className={`py-2 dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
-                home
+                Home
               </ListItem>
 
             </NavLink>
             
             {categories.map(category => {
-              if (category === 'home') return null
+              if (category === 'Home') return null
 
               return(
                 <NavLink key={category} to={`/${category}`} className='group'>
@@ -105,7 +105,7 @@ export default function SideMenu() {
             })}
 
             {/* Placeholder category for when user is in a brand new category link */}
-            {(!categories.includes(category) && category !== 'home') && (
+            {(!categories.includes(category) && category !== 'Home') && (
               <NavLink key={category} to={`/${category}`} className='group'>
 
                 <ListItem className={`py-2 dark:text-white group-[.active]:bg-gray-300 dark:group-[.active]:text-gray-900 dark:group-[.active]:bg-white dark:hover:text-black transition-colors duration-300`}>
