@@ -80,6 +80,13 @@ export default function TaskComponent() {
       <List className="gap-y-4 p-0 text-black dark:text-white transition-colors duration-300">
         {tasks.length == 0 && <p className={`text-base`}>No tasks yet. Type one below to get started!</p>}
         {tasks.map(task => {
+          if (!task.important) return
+          return (
+            <Task key={task.id} task={task}/>
+          )
+        })}
+        {tasks.map(task => {
+          if (task.important) return
           return (
             <Task key={task.id} task={task}/>
           )

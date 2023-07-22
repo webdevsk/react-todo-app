@@ -5,7 +5,9 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 const extendedAnimations = {
   ripple : 'ripple .3s linear',
   toLeft : 'toLeft .3s ease-in-out',
+  toRight: 'toRight .3s ease-in-out',
   toUp   : 'toUp .3s ease-in-out',
+  toDown : 'toDown .3s ease-in-out',
 }
 
 const extendedKeyframes = {
@@ -15,9 +17,18 @@ const extendedKeyframes = {
             '50%' : {opacity: 1},
             '100%': {transform: 'translateY(0px)'}
           },
+  toDown  : { 
+            '0%'  : {transform: 'translateY(-10px)', opacity: '0'},
+            '50%' : {opacity: 1},
+            '100%': {transform: 'translateY(0px)'}
+          },
   toLeft: {
-            '0%'  : {transform: 'translateX(0px)'},
-            '100%': {transform: 'translateX(-10px)'}
+            '0%'  : {transform: 'translateX(10px)'},
+            '100%': {transform: 'translateX(0px)'}
+          },
+  toRight: {
+            '0%'  : {transform: 'translateX(-10px)'},
+            '100%': {transform: 'translateX(0px)'}
           }
 }
 
