@@ -30,7 +30,7 @@ export default function CategoryMaker(){
             />
 
             <ListItemSuffix className={`${link === '' ? 'hidden' : ''}`}>
-                <Tooltip content='Reset'>
+                <Tooltip content='Reset' className={`${link === '' ? 'hidden' : ''}`}>
                     <button title='Cancel' aria-label='Reset' onClick={resetLink}
                     className={`px-3 py-2 text-red-500 border-s border-gray-300 hover:bg-red-50 transition-colors`}
                     >
@@ -40,7 +40,7 @@ export default function CategoryMaker(){
             </ListItemSuffix>
 
             <ListItemSuffix className={`${link === '' ? 'hidden' : ''}`}>
-                <Tooltip content='Go!'>
+                <Tooltip content='Go!' className={`${link === '' ? 'hidden' : ''}`}>
                     <Link to={link} aria-label="Go!"
                     onClick={()=>setLink('')}
                     className={`block text-green-500 hover:bg-green-50 transition-colors px-3 py-2 rounded-tr-lg rounded-br-lg border-x border-gray-300`}>

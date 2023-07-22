@@ -178,18 +178,37 @@ _OR_
     </tr>
   </table>
 
-<details open>
+<details>
   <summary><h3 style="margin: 0">⭐ Handheld accessible layout</h3></summary>
+  <br/>
+
+  * The input field is placed at the bottom making it is easily reachable on handheld devices.
+  * Unlike most other Todo Apps, it featues top to bottom (old to new) layout.
+  * As you add new tasks, the newer tasks will appear at the bottom.
+  * The page will scroll down automatically to keep newer tasks in focus.
 
   <details>
   <summary>
-  <strong>⚒️ Here's a snippet of code on how I solved it:</strong>
+  <strong>⚒️ Here's a snippet of code on how I solved the scroll issue:</strong>
   </summary>
 
     ```jsx
+    const {tasks, category} = useLoaderData()
 
+    //Length of the task array before new task is added
+    const prevLength = useRef(tasks.length)
+
+    useEffect(() => {
+      // Run only when new task is added
+      if (prevLength.current < tasks.length){
+        window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" })
+      }
+      //Setting new task array length after new task is added
+      prevLength.current = tasks.length
+    }, [tasks])
     ```
   </details>
+  <br/>
 </details>
 
 <details>
@@ -255,18 +274,39 @@ _OR_
   </details>
 </details>
 
-<details open>
+<details>
   <summary><h3 style="margin: 0">⭐ Create your own Categories</h3></summary>
+  <br/>
+  <div align="center">
+    <img src="github_assets/showcase-dynamic-category.gif" width="400px">
+  </div>
+  <br/>
 
-  <details>
-  <summary>
-  <strong>⚒️ Here's a snippet of code on how I solved it:</strong>
-  </summary>
+  * Click on the "Add new category" button and type your desired name for it.
+  * Press Enter or click on the ✅ (tick) button.
+  * You will be redirected to a new page where you can add tasks in this category.
+  * Visit or Bookmark https://celadon-cactus-42acbb.netlify.app/School
+    * If you already had tasks in School category, the tasks will be listed. 
+    * If you never had a School category, it will generate a new Category where you can add new tasks.
+    * You can write any strings in place of "School".
+    * If you want to add spaces or symbols in category name, rather create it from the Side Drawer Menu instead.
+  * To save up space in Database/storage, A category won't be stored unless you have atleast 1 task in it.
 
-    ```jsx
+  <br/>
+</details>
 
-    ```
-  </details>
+<details>
+  <summary><h3 style="margin: 0">⭐ Bulk Operations</h3></summary>
+  <br/>
+  <div align="center">
+    <img src="github_assets/showcase-bulk-operation.gif" width="400px">
+  </div>
+  <br/>
+
+   * Completed all tasks for today? Well, congratulations!!! The "Mark all as completed" button will be handy then.
+   * No need to clutter the list with already complted tasks. The "Delete All Completed" button will make them go away.
+
+  <br/>
 </details>
 Work in progress...
 <!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->

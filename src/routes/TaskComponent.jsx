@@ -44,7 +44,7 @@ export default function TaskComponent() {
 
         <fetcher.Form method='post' action='allcompleted'>
           <Tooltip content='Mark all as completed' animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
-            <button title='Mark all as completed' type='submit' className={`w-6 h-6 m-3 rounded-sm shadow-none group bg-transparent`}>
+            <button type='submit' className={`w-6 h-6 m-3 rounded-sm shadow-none group bg-transparent`}>
               <FontAwesomeIcon className={`text-xl group-hover:text-amber-500 transition-colors`} icon={faListCheck} />
             </button>
           </Tooltip>
