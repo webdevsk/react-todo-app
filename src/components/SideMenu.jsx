@@ -131,7 +131,7 @@ export default function SideMenu() {
 
                 <a href="https://github.com/webdevsk/react-todo-app" target='_blank' rel='noreferrer'>
                   <Tooltip content="GitHub" animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
-                    <IconButton title='Developer Github' className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
+                    <IconButton className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
                       <FontAwesomeIcon className={`w-7 h-7 mt-[2px] text-gray-900`} icon={faGithubSquare} />
                     </IconButton>
                   </Tooltip>
@@ -139,7 +139,7 @@ export default function SideMenu() {
 
                 <a href="https://www.linkedin.com/in/webdevsk/" target='_blank' rel='noreferrer'>
                   <Tooltip content="Linkedin" animate={{ mount: { scale: 1, y: 0 }, unmount: { scale: 0, y: 25 }, }}>
-                    <IconButton title='Developer Linkedin' className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
+                    <IconButton className="bg-white rounded shadow-none hover:shadow-none w-6 h-6">
                       <FontAwesomeIcon className={`w-7 h-7 mt-[2px] text-gray-900`} icon={faLinkedin} />
                     </IconButton>
                   </Tooltip>
@@ -163,7 +163,7 @@ export default function SideMenu() {
 function BurgerMenuBtn({id, className, open, toggleDrawer}){
   return(
     <div className={className}>
-      <button onClick={toggleDrawer} title='Toggles drawer menu' className={`relative group`}>
+      <button onClick={toggleDrawer} className={`relative group`}>
         <div id={id} className={`relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-gray-300 ring-gray-300 hover:ring-8 ${open ? 'ring-4' : 'ring-0'} ring-opacity-30 duration-200 shadow-md`}>
           <div className={`flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden ${open && '-translate-x-1.5 rotate-180'}`}>
             <div className={`bg-black h-[2px] transform transition-all duration-300 origin-left ${open ? 'rotate-[42deg] w-2/3 delay-150' : 'w-7'}`}></div>
