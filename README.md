@@ -56,7 +56,6 @@
 <summary>Table of Contents</summary>
 
 - [About The Project](#about-the-project)
-    - [⭐ Head over to the Features section to dive deep into the problems I faced and how I solved them.](#-head-over-to-the-features-section-to-dive-deep-into-the-problems-i-faced-and-how-i-solved-them)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
@@ -93,7 +92,7 @@
   * Users can visit site_url/Groceries and add tasks directly to a category named Groceries.
   * Nice little rewarding animations when a task is completed. 😉
 
-#### ⭐ Head over to the [Features](#features) section to dive deep into the problems I faced and how I solved them.
+<h4>⭐ Head over to the <a href="#features">Features</a> section to dive deep into the problems I faced and how I solved them.</h4>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
