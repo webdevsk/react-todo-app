@@ -14,16 +14,16 @@ function ThemeChanger() {
                 mount: { scale: 1, y: 0 },
                 unmount: { scale: 0, y: 25 },
                 }}>
-                    <Tab key='auto' value='auto' title='auto' onClick={() => setTheme('auto')}>
+                    <Tab key='auto' value='auto' onClick={() => setTheme('auto')}>
                         Auto
                     </Tab>
                 </Tooltip>
 
-                <Tab key='light' value='light' title='light' onClick={() => setTheme('light')}>
+                <Tab key='light' value='light' onClick={() => setTheme('light')}>
                     Light
                 </Tab>
 
-                <Tab key='dark' value='dark' title='dark' onClick={() => setTheme('dark')}>
+                <Tab key='dark' value='dark' onClick={() => setTheme('dark')}>
                     Dark
                 </Tab>
 

@@ -155,11 +155,11 @@ _OR_
 <table>
     <tr valign="bottom">
       <td>
-        <img src="github_assets/snapshot.png" alt="Menu desktop view">
+        <img src="github_assets/snapshot-desktop.apng" alt="Menu desktop view">
         <p align="center"><small>Desktop</small></p>
       </td>
       <td>
-        <img src="github_assets/mobile-snapshot.png" alt="Menu mobile view">
+        <img src="github_assets/snapshot-mobile.apng" alt="Menu mobile view">
         <p align="center"><small>Mobile</small></p>
       </td>
     </tr>
