@@ -59,7 +59,7 @@ export default function TaskComponent() {
         }}>
         
           <MenuHandler>
-            <button title='Delete all completed' className={`${tasks.filter(task => task.completed === true).length > 0 ? `block` : `hidden`}  animate-toUp focus-visible:!outline-0`}>
+            <button className={`${tasks.filter(task => task.completed === true).length > 0 ? `block` : `hidden`}  animate-toUp focus-visible:!outline-0`}>
               <Typography variant="h6" className={`text-red-500 mx-4`}>Delete all completed</Typography>
             </button>
           </MenuHandler>

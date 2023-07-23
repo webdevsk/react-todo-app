@@ -31,7 +31,7 @@ export default function CategoryMaker(){
 
             <ListItemSuffix className={`${link === '' ? 'hidden' : ''}`}>
                 <Tooltip content='Reset' className={`${link === '' ? 'hidden' : ''}`}>
-                    <button title='Cancel' aria-label='Reset' onClick={resetLink}
+                    <button aria-label='Reset' onClick={resetLink}
                     className={`px-3 py-2 text-red-500 border-s border-gray-300 hover:bg-red-50 transition-colors`}
                     >
                         x

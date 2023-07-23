@@ -7,7 +7,6 @@ export default function DeleteMarker({id, className}) {
     <fetcher.Form method='post' action='destroy'>
       <input type="hidden" name="id" value={id} />
       <button 
-      title='Delete item'
       type='submit'
       className={`
       p-4

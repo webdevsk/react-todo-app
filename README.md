@@ -265,7 +265,7 @@ _OR_
   <summary><h3 style="margin: 0">⭐ Create your own Categories</h3></summary>
   <br/>
   <div align="center">
-    <img src="github_assets/showcase-dynamic-category.gif" width="800px">
+    <img src="github_assets/dynamic-category.apng" width="800px">
   </div>
   <br/>
 
@@ -286,7 +286,7 @@ _OR_
   <summary><h3 style="margin: 0">⭐ Bulk Operations</h3></summary>
   <br/>
   <div align="center">
-    <img src="github_assets/showcase-bulk-operation.gif" width="800px">
+    <img src="github_assets/bulk-action.apng" width="800px">
   </div>
   <br/>
 
