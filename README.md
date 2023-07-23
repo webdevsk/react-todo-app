@@ -51,35 +51,22 @@
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
+<summary>Table of Contents</summary>
+
+- [About The Project](#about-the-project)
+    - [⭐ Head over to the Features section to dive deep into the problems I faced and how I solved them.](#-head-over-to-the-features-section-to-dive-deep-into-the-problems-i-faced-and-how-i-solved-them)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 </details>
-
-
+<br/>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -102,6 +89,7 @@
   * Delete task.
   * Bulk delete completed tasks.
   * Mark task as important.
+  * Important tasks get pinned to top.
   * Users can visit site_url/Groceries and add tasks directly to a category named Groceries.
   * Nice little rewarding animations when a task is completed. 😉
 
@@ -308,7 +296,8 @@ _OR_
 
   <br/>
 </details>
-Work in progress...
+
+And many more handmade features, animations here and there...
 <!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
