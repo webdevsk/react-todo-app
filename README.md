@@ -1,36 +1,21 @@
 <!-- Replace these using search `repo_name`, `project_title`, `project_description`, view_demo_link -->
-
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
+<!-- [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
+[![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 <!-- PROJECT LOGO -->
 <br />
+
 <div align="center">
   <a href="https://github.com/webdevsk/react-todo-app">
     <img src="github_assets/logo.png" alt="Logo" width="100" height="100">
@@ -41,19 +26,20 @@
   <p align="center">
     A TODO App based on React with dynamic Routing.
     <br />
-    <a href="https://github.com/webdevsk/react-todo-app"><strong>Explore the docs »</strong></a>
-    <br />
-    <a href="https://celadon-cactus-42acbb.netlify.app/" target="_blank">View Demo</a>
-    ·
-    <a href="https://github.com/webdevsk/react-todo-app/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/webdevsk/react-todo-app/issues">Request Feature</a>
+
+  [**Explore the docs »**](https://github.com/webdevsk/react-todo-app)
+
+  [View Demo](https://celadon-cactus-42acbb.netlify.app/)
+  · [Report Bug](https://github.com/webdevsk/react-todo-app/issues)
+  · [Request Feature](https://github.com/webdevsk/react-todo-app/issues)
   </p>
 </div>
 
+---
 <!-- TABLE OF CONTENTS -->
 <details>
 <summary>Table of Contents</summary>
+<br />
 
 - [About The Project](#about-the-project)
   - [Built With](#built-with)
@@ -64,60 +50,55 @@
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
+
 </details>
 <br/>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
 <div align="center">
-<a href="https://celadon-cactus-42acbb.netlify.app/">
-<img src="github_assets/snapshot.png" target="_blank" alt="Product snapshot">
-</a>
+
+[![Product snapshot](github_assets/snapshot.png)](https://celadon-cactus-42acbb.netlify.app/)
+
 </div>
 <br/>
 
-* This is a simple TODO APP built with React.
-* It was built with handheld device accessibility in mind. Hence the bottom Input field.
-* It features dynamic routing and dynamic category using React Router.
-* Light, Dark and Auto theme. The auto theme follows system preferences.
-* Here's what users can expect from this APP:
-  * Create Category for different types of tasks.
-  * Create tasks for the respective category.
-  * Mark completed task as done.
-  * Bulk Mark all tasks as done.
-  * Delete task.
-  * Bulk delete completed tasks.
-  * Mark task as important.
-  * Important tasks get pinned to top.
-  * Users can visit site_url/Groceries and add tasks directly to a category named Groceries.
-  * Nice little rewarding animations when a task is completed. 😉
+- This is a simple TODO APP built with React.
+- It was built with handheld device accessibility in mind. Hence the bottom Input field.
+- It features dynamic routing and dynamic category using React Router.
+- Light, Dark and Auto theme. The auto theme follows system preferences.
+- Here's what users can expect from this APP:
+  - Create Category for different types of tasks.
+  - Create tasks for the respective category.
+  - Mark completed task as done.
+  - Bulk Mark all tasks as done.
+  - Delete task.
+  - Bulk delete completed tasks.
+  - Mark task as important.
+  - Important tasks get pinned to top.
+  - Users can visit site_url/Groceries and add tasks directly to a category named Groceries.
+  - Nice little rewarding animations when a task is completed. 😉
 
 <h4>⭐ Head over to the <a href="#features">Features</a> section to dive deep into the problems I faced and how I solved them.</h4>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ### Built With
 
-* [![React][React]][React-url]
-* [![React-router][React-router]][React-router-url]
-* [![TailwindCSS][TailwindCSS]][Tailwind-url]
-* [![MUI][MUI]][MUI-url]
+[![React][React]][React-url]  
+[![React-router][React-router]][React-router-url]  
+[![TailwindCSS][TailwindCSS]][Tailwind-url]  
+[![MUI][MUI]][MUI-url]  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-🌐 The site is already live at: 
-<a href="https://celadon-cactus-42acbb.netlify.app/" target="_blank">
-https://celadon-cactus-42acbb.netlify.app/
-</a>
+🌐 The site is already live at: [https://celadon-cactus-42acbb.netlify.app/](https://celadon-cactus-42acbb.netlify.app/)
 
-_OR_
+OR
 
 🖥️ You can test it on your local machine by following the steps below.
 
@@ -135,17 +116,22 @@ _OR_
 
 <!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
 1. Clone the repo
-   ```sh
-   git clone https://github.com/webdevsk/react-todo-app.git
-   ```
+
+    ```sh
+    git clone https://github.com/webdevsk/react-todo-app.git
+    ```
+
 1. Install NPM packages
-   ```sh
-   npm install
-   ```
+
+    ```sh
+    npm install
+    ```
+
 1. Run Dev server
-   ```js
-   npm run dev
-   ```
+
+    ```js
+    npm run dev
+    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -154,154 +140,149 @@ _OR_
 
 <table>
     <tr valign="bottom">
-      <td>
-        <img src="github_assets/snapshot-desktop.apng" alt="Menu desktop view">
-        <p align="center"><small>Desktop</small></p>
-      </td>
-      <td>
-        <img src="github_assets/snapshot-mobile.apng" alt="Menu mobile view">
-        <p align="center"><small>Mobile</small></p>
-      </td>
+    <td>
+    <a href="#"><img src="github_assets/snapshot-desktop.apng" alt="Menu desktop view"></a>
+    <p align="center"><small>Desktop</small></p>
+    </td>
+    <td>
+    <a href="#"><img src="github_assets/snapshot-mobile.apng" alt="Menu mobile view"></a>
+    <p align="center"><small>Mobile</small></p>
+    </td>
     </tr>
   </table>
 
 <details>
-  <summary><h3 style="margin: 0">⭐ Handheld accessible layout</h3></summary>
-  <br/>
+  <summary><h3>⭐ Handheld accessible layout</h3></summary>
 
-  * The input field is placed at the bottom making it is easily reachable on handheld devices.
-  * Unlike most other Todo Apps, it featues top to bottom (old to new) layout.
-  * As you add new tasks, the newer tasks will appear at the bottom.
-  * The page will scroll down automatically to keep newer tasks in focus.
+- The input field is placed at the bottom making it is easily reachable on handheld devices.
+- Unlike most other Todo Apps, it featues top to bottom (old to new) layout.
+- As you add new tasks, the newer tasks will appear at the bottom.
+- The page will scroll down automatically to keep newer tasks in focus.
 
   <details>
   <summary>
   <strong>⚒️ Here's a snippet of code on how I solved the scroll issue:</strong>
   </summary>
 
-    ```jsx
-    const {tasks, category} = useLoaderData()
+  ```jsx
+  const {tasks, category} = useLoaderData()
 
-    //Length of the task array before new task is added
-    const prevLength = useRef(tasks.length)
+  //Length of the task array before new task is added
+  const prevLength = useRef(tasks.length)
 
-    useEffect(() => {
-      // Run only when new task is added
-      if (prevLength.current < tasks.length){
-        window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" })
-      }
-      //Setting new task array length after new task is added
-      prevLength.current = tasks.length
-    }, [tasks])
-    ```
+  useEffect(() => {
+    // Run only when new task is added
+    if (prevLength.current < tasks.length){
+      window.scrollTo({ left: 0, top: document.body.scrollHeight || document.documentElement.scrollHeight, behavior: "smooth" })
+    }
+    //Setting new task array length after new task is added
+    prevLength.current = tasks.length
+  }, [tasks])
+  ```
+  
   </details>
-  <br/>
+
 </details>
 
 <details>
-  <summary><h3 style="margin: 0">⭐ Dynamic Drawer Menu</h3></summary>
+  <summary><h3>⭐ Dynamic Drawer Menu</h3></summary>
 
-   * Larger screens
-     * Side Drawer Menu can stay either Shown or Hidden based on user's preference.
-     * The shown/hidden state is persisted between browsing sessions.
-     * Clicking outside the menu will not close it.
+- Larger screens
+  - Side Drawer Menu can stay either Shown or Hidden based on user's preference.
+  - The shown/hidden state is persisted between browsing sessions.
+  - Clicking outside the menu will not close it.
 
-   * Smaller screens (1400px or less)
-     * Side Drawer Menu will always be Hidden unless user opens it.
-     * Window size is consistently being monitored to check if the window goes below 1400px. If so the menu will hide automatically.
-     * Clicking outside the menu will close it.
+- Smaller screens (1400px or less)
+  - Side Drawer Menu will always be Hidden unless user opens it.
+  - Window size is consistently being monitored to check if the window goesbelow 1400px. If so the menu will hide automatically.
+  - Clicking outside the menu will close it.
   <details>
   <summary>
   <strong>⚒️ Here's a snippet of code on how I solved it:</strong>
   </summary>
 
-    ```jsx
-    //Initial state. Defaults to false on smaller screens
-    const [open, setOpen] = useState(() => (
-      window.outerWidth <= 1400
-      ? false
-      : 'drawerOpen' in localStorage
-      ? true
-      : false
-    ))
+  ```jsx
+  //Initial state. Defaults to false on smaller screens
+  const [open, setOpen] = useState(() => (
+    window.outerWidth <= 1400
+    ? false
+    : 'drawerOpen' in localStorage
+    ? true
+    : false
+  ))
 
-    //Saves state in localStorage
-    useEffect(()=> (
-      open 
-      ? localStorage.setItem('drawerOpen', '1') 
-      : localStorage.removeItem('drawerOpen')
-    ), [open])
+  //Saves state in localStorage
+  useEffect(()=> (
+    open 
+    ? localStorage.setItem('drawerOpen', '1') 
+    : localStorage.removeItem('drawerOpen')
+  ), [open])
 
-    //Enables overlay on smaller screens. Which blurs outside content and listens to touch events
-    const [overlay, setOverlay] = useState(() => window.outerWidth <= 1400)
+  //Enables overlay on smaller screens. Which blurs outside content and listens to touch events
+  const [overlay, setOverlay] = useState(() => window.outerWidth <= 1400)
 
-    //Runs on window resize
-    useEffect (()=>{
-      let currentWindowWidth = window.outerWidth
+  //Runs on window resize
+  useEffect (()=>{
+    let currentWindowWidth = window.outerWidth
 
-      function handleWindowResize(){
-        //Run only when the horizontal width changes to avoid firing on keyboard popup on touch devices
-        if (window.outerWidth === currentWindowWidth) return
-        currentWindowWidth = window.outerWidth
+    function handleWindowResize(){
+      //Run only when the horizontal width changes to avoid firing on keyboard popup on touch devices
+      if (window.outerWidth === currentWindowWidth) return
+      currentWindowWidth = window.outerWidth
 
-        if (window.outerWidth <= 1400){
-          setOpen(false)
-          setOverlay(true)
-        } else {
-          setOverlay(false)
-        }
+      if (window.outerWidth <= 1400){
+        setOpen(false)
+        setOverlay(true)
+      } else {
+        setOverlay(false)
       }
-      
-      window.addEventListener('resize', handleWindowResize)
-      return () => {
-        window.removeEventListener('resize', handleWindowResize)
-      }
-    }, [])
-    ```
+    }
+    
+    window.addEventListener('resize', handleWindowResize)
+    return () => {
+      window.removeEventListener('resize', handleWindowResize)
+    }
+  }, [])
+  ```
+
   </details>
+
 </details>
 
 <details>
-  <summary><h3 style="margin: 0">⭐ Create your own Categories</h3></summary>
-  <br/>
+  <summary><h3>⭐ Create your own Categories</h3></summary>
   <div align="center">
     <img src="github_assets/dynamic-category.apng" width="800px">
   </div>
   <br/>
 
-  * Click on the "Add new category" button and type your desired name for it.
-  * Press Enter or click on the ✅ (tick) button.
-  * You will be redirected to a new page where you can add tasks in this category.
-  * Visit or Bookmark https://celadon-cactus-42acbb.netlify.app/School
-    * If you already had tasks in School category, the tasks will be listed. 
-    * If you never had a School category, it will generate a new Category where you can add new tasks.
-    * You can write any strings in place of "School".
-    * If you want to add spaces or symbols in category name, rather create it from the Side Drawer Menu instead.
-  * To save up space in Database/storage, A category won't be stored unless you have atleast 1 task in it.
+- Click on the "Add new category" button and type your desired name for it.
+- Press Enter or click on the ✅ (tick) button.
+- You will be redirected to a new page where you can add tasks in this category.
+- Visit or Bookmark https://celadon-cactus-42acbb.netlify.app/School
+  - If you already had tasks in School category, the tasks will be listed. 
+  - If you never had a School category, it will generate a new Category where you can add new tasks.
+  - You can write any strings in place of "School".
+  - If you want to add spaces or symbols in category name, rather create it from the Side Drawer Menu instead.
+- To save up space in Database/storage, A category won't be stored unless you have atleast 1 task in it.
 
-  <br/>
 </details>
 
 <details>
-  <summary><h3 style="margin: 0">⭐ Bulk Operations</h3></summary>
-  <br/>
+  <summary><h3>⭐ Bulk Operations</h3></summary>
   <div align="center">
     <img src="github_assets/bulk-action.apng" width="800px">
   </div>
   <br/>
 
-   * Completed all tasks for today? Well, congratulations!!! The "Mark all as completed" button will be handy then.
-   * No need to clutter the list with already complted tasks. The "Delete All Completed" button will make them go away.
+- Completed all tasks for today? Well, congratulations!!! The "Mark all as completed" button will be handy then.
+- No need to clutter the list with already complted tasks. The "Delete All Completed" button will make them go away.
 
-  <br/>
 </details>
 
 And many more handmade features, animations here and there...
-<!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ROADMAP -->
 <!-- ## Roadmap
@@ -315,8 +296,6 @@ See the [open issues](https://github.com/webdevsk/react-todo-app/issues) for a f
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -326,14 +305,12 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+1. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+1. Push to the Branch (`git push origin feature/AmazingFeature`)
+1. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- LICENSE -->
 ## License
@@ -341,8 +318,6 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -364,8 +339,6 @@ Project Link: [https://github.com/webdevsk/react-todo-app](https://github.com/we
 * []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
